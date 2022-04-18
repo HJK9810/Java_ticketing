@@ -27,7 +27,7 @@ public class CalTickets { // calculate all
 		if (todayMonth < yourMonth) age -= 1; // 생일 달이 지나지 않았을경우
 		else if (todayMonth == yourMonth && tdate >= yourDay) age -= 1; // 생일 달이지만, 날짜가 지나지 않은경우
 
-		return age;
+		return checkAge(age);
 	}
 
 	protected int checkAge(int age) { // 나이 체크

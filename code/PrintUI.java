@@ -16,17 +16,18 @@ public class PrintUI { // for print
 		return idata.checkTwoChoice();
 	}
 
-	protected void printTickets(int sum, int lastline, int[][] orderList) { // 발권 종료후, 발권한 모든 티켓들 출력
+	protected void printTickets(int sum, int lastline) { // 발권 종료후, 발권한 모든 티켓들 출력
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
-
+		int[][] orderlist = Ticketing.orderList; // 계속 왔다갔다 방지를 위한 배열 재정의
 		for (int idx = 0; idx < lastline; idx++) {
-			int typeAll = orderList[idx][0];
-			int typeDay = orderList[idx][1];
-			int age = orderList[idx][2];
-			int count = orderList[idx][3];
-			int price = orderList[idx][4];
-			int sales = orderList[idx][5];
+			int[] line = orderlist[idx];
+			int typeAll = line[0];
+			int typeDay = line[1];
+			int age = line[2];
+			int count = line[3];
+			int price = line[4];
+			int sales = line[5];
 			// 종합 or 파크이용권
 			if (typeAll == 1) System.out.printf("%10s ", "종합이용권");
 			else if (typeAll == 2) System.out.printf("%10s ", "파크이용권");

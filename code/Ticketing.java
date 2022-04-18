@@ -24,7 +24,7 @@ public class Ticketing { // main for ticketing programm
 				int count = input.ticketsCount(); // 티켓수
 				int forsales = input.ticketSale(typeAll); // 우대할인적용
 
-				int age = calc.checkAge(calc.CalAge(residentNum)); // 연령대계산
+				int age = calc.CalAge(residentNum); // 연령대계산
 				int price = calc.checkTicketPrice(typeAll, typeDay, age); // 티켓 정가
 				int saleprice = calc.salePriceCal(price, forsales); // 할인가 적용 티켓값
 				int sum = calc.ticketSum(price, forsales, count, saleprice); // 티켓값 총합
@@ -33,7 +33,7 @@ public class Ticketing { // main for ticketing programm
 				int check = pui.printReapeat(sum); // 추가발권질문
 				if (check == 2) break;
 			}
-			pui.printTickets(totalSum, position, orderList); // 발권한 티켓 종류 & 수 & 가격등 출력
+			pui.printTickets(totalSum, position); // 발권한 티켓 종류 & 수 & 가격등 출력
 			save.inputFile(position); // 해당 파일에 입력
 			isExit = pui.inputEnd(); // 종료질문
 		} while (isExit == 1);
