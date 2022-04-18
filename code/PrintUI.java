@@ -32,8 +32,8 @@ public class PrintUI { // for print
 			int price = orderList[idx][4];
 			int sales = orderList[idx][5];
 
-			if (typeAll == 1) System.out.printf("%12s ", "종합이용권");
-			else if (typeAll == 2) System.out.printf("%12s ", "파크이용권");
+			if (typeAll == 1) System.out.printf("%10s ", "종합이용권");
+			else if (typeAll == 2) System.out.printf("%10s ", "파크이용권");
 
 			if (typeDay == 1) System.out.printf("%6s ", "1DAY");
 			else if (typeDay == 2) System.out.printf("%6s ", "After4");
