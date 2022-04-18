@@ -5,21 +5,20 @@ public class PrintUI { // for print
 	final int NONE = 1, DISABLE = 2, MERIT = 3, VACSOLD = 4, PREGNANT = 5, MULTICHILD = 6;
 	final int BABY = 1, CHILD = 2, TEEN = 3, ADULT = 4, OLD = 5;
 
-	
 	protected int ticketTypeAll() { // 종합이용권 or 파크이용권 선택
 		System.out.println("  권종을 선택하세요.");
 		System.out.println("\t1. 종합이용권\n\t2. 파크이용권");
 		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
-	
+
 	protected int ticketTypeDay() { // 종일권 or 오후권 선택
 		System.out.println("  권종을 선택하세요.");
 		System.out.println("\t1. 1DAY\n\t2. After4(오후 4시 이후 입장)");
 		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
-	
+
 	protected void printTickets(int sum, int lastline, int[][] orderList) {
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
@@ -67,18 +66,18 @@ public class PrintUI { // for print
 		System.out.println(" ** 임산부와 다둥이행복카드를 제외한 우대사항은 동반 1인까지 우대가 적용됩니다.");
 		System.out.println("==============================================================\n");
 	}
-	
+
 	protected int printReapeat(int sum) {
 		System.out.println("  가격은 " + sum + " 원 입니다.");
 		System.out.println("  감사합니다.\n");
-		
+
 		System.out.println("  계속 발권 하시겠습니까?");
 		System.out.println("\t1. 티켓발권\n\t2. 종료");
-		
+
 		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
-	
+
 	protected int inputEnd() {
 		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : ");
 		InputData idata = new InputData();
