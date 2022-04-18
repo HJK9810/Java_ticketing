@@ -34,6 +34,7 @@ public class Ticketing { // main for ticketing programm
 				if (check == 2) break;
 			}
 			pui.printTickets(totalSum, position, orderList);
+			save.inputFile(position);
 			isExit = pui.inputEnd();
 		} while (isExit == 1);
 	}
