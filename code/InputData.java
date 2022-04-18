@@ -43,7 +43,7 @@ public class InputData { // for inputs
 
 	protected int ticketSale(int type) { // 우대사항선택
 		int input;
-		System.out.println("  권종을 선택하세요.");
+		System.out.println("  우대사항을 선택하세요.");
 		System.out.println("\t1. 없음(나이 우대는 자동처리)");
 		System.out.println("\t2. 장애인");
 		System.out.println("\t3. 국가유공자");
