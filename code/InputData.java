@@ -54,12 +54,12 @@ public class InputData { // for inputs
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while(input < 1 || input > 3);
+			} while(input < 1 || input > 6);
 		} else {
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while(input < 1 || input > 6);
+			} while(input < 1 || input > 3);
 		}
 
 		return input;
