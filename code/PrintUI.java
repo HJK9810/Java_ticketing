@@ -1,9 +1,6 @@
 package LotteTicketBox;
 
 public class PrintUI { // for print
-	// 없음, 장애, 유공자, 휴가장병, 임산부, 다둥이
-	final int NONE = 1, DISABLE = 2, MERIT = 3, VACSOLD = 4, PREGNANT = 5, MULTICHILD = 6;
-	final int BABY = 1, CHILD = 2, TEEN = 3, ADULT = 4, OLD = 5;
 
 	protected int ticketTypeAll() { // 종합이용권 or 파크이용권 선택
 		System.out.println("  권종을 선택하세요.");
@@ -37,26 +34,26 @@ public class PrintUI { // for print
 			if (typeDay == 1) System.out.printf("%6s ", "1DAY");
 			else if (typeDay == 2) System.out.printf("%6s ", "After4");
 			// 연령
-			if (age == OLD) {
+			if (age == Ticketing.OLD) {
 				System.out.printf("%6s ", "노인");
-			} else if (age == ADULT) { // 어른
+			} else if (age == Ticketing.ADULT) { // 어른
 				System.out.printf("%6s ", "어른");
-			} else if (age == TEEN) { // 청소년
+			} else if (age == Ticketing.TEEN) { // 청소년
 				System.out.printf("%6s ", "청소년");
-			} else if (age == CHILD) { // 어린이
+			} else if (age == Ticketing.CHILD) { // 어린이
 				System.out.printf("%6s ", "어린이");
 			} else
 				System.out.printf("%6s ", "베이비");
 			// 티켓수, 티켓가격(할인적용)
 			System.out.printf("X%-6d %-10d    ", count, price);
 			// 우대권 종류
-			if (sales == NONE) System.out.printf("*우대적용 없음\n");
+			if (sales == Ticketing.NONE) System.out.printf("*우대적용 없음\n");
 			else {
-				if (sales == DISABLE) System.out.printf("*장애인 ");
-				else if (sales == MERIT) System.out.printf("*국가유공자 ");
-				else if (sales == VACSOLD) System.out.printf("*휴가장병 ");
-				else if (sales == PREGNANT) System.out.printf("*임산부 ");
-				else if (sales == MULTICHILD) System.out.printf("*다둥이 ");
+				if (sales == Ticketing.DISABLE) System.out.printf("*장애인 ");
+				else if (sales == Ticketing.MERIT) System.out.printf("*국가유공자 ");
+				else if (sales == Ticketing.VACSOLD) System.out.printf("*휴가장병 ");
+				else if (sales == Ticketing.PREGNANT) System.out.printf("*임산부 ");
+				else if (sales == Ticketing.MULTICHILD) System.out.printf("*다둥이 ");
 
 				System.out.printf("우대적용\n");
 			}

@@ -5,9 +5,6 @@ import java.util.Date;
 
 public class CalTickets { // calculate all
 	final int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19, MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;
-	// 없음, 장애, 유공자, 휴가장병, 임산부, 다둥이
-	final int NONE = 1, DISABLE = 2, MERIT = 3, VACSOLD = 4, PREGNANT = 5, MULTICHILD = 6;
-	final int BABY = 1, CHILD = 2, TEEN = 3, ADULT = 4, OLD = 5;
 
 	protected int CalAge(int residentNum) { // calculate how old
 		SimpleDateFormat format = new SimpleDateFormat("YYYYMMdd");
@@ -34,11 +31,11 @@ public class CalTickets { // calculate all
 	}
 
 	protected int checkAge(int age) { // 나이 체크
-		if (age < MIN_CHILD && age >= MIN_BABY) age = BABY;
-		else if (age > MAX_ADULT) age = OLD;
-		else if (age > MAX_TEEN) age = ADULT;
-		else if (age < MIN_ADULT && age > MAX_CHILD) age = TEEN;
-		else if (age < MIN_TEEN && age >= MIN_CHILD) age = CHILD;
+		if (age < MIN_CHILD && age >= MIN_BABY) age = Ticketing.BABY;
+		else if (age > MAX_ADULT) age = Ticketing.OLD;
+		else if (age > MAX_TEEN) age = Ticketing.ADULT;
+		else if (age < MIN_ADULT && age > MAX_CHILD) age = Ticketing.TEEN;
+		else if (age < MIN_TEEN && age >= MIN_CHILD) age = Ticketing.CHILD;
 
 		return age;
 	}
@@ -54,11 +51,11 @@ public class CalTickets { // calculate all
 		if (typeAll == 1) idx = typeDay - 1; // index값 0, 1
 		else if (typeAll == 2) idx = typeDay + 1; // index값 2, 3
 
-		if (age == BABY) price = BABY_FEE;
-		else if (age == OLD) price = CHILD_FEE[idx]; // 65세 이상 = 어린이요금
-		else if (age == ADULT) price = ADULT_FEE[idx];
-		else if (age == TEEN) price = TEEN_FEE[idx];
-		else if (age == CHILD) price = CHILD_FEE[idx];
+		if (age == Ticketing.BABY) price = BABY_FEE;
+		else if (age == Ticketing.OLD) price = CHILD_FEE[idx]; // 65세 이상 = 어린이요금
+		else if (age == Ticketing.ADULT) price = ADULT_FEE[idx];
+		else if (age == Ticketing.TEEN) price = TEEN_FEE[idx];
+		else if (age == Ticketing.CHILD) price = CHILD_FEE[idx];
 
 		return price;
 	}
@@ -71,8 +68,8 @@ public class CalTickets { // calculate all
 	protected int ticketSum(int price, int type, int count, int saleprice) { // 티켓값 총 합
 		int sum = 0;
 
-		if (type == NONE) sum = price * count; // 할인 미적용
-		else if ((type != PREGNANT || type != MULTICHILD) && count > 1) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
+		if (type == Ticketing.NONE) sum = price * count; // 할인 미적용
+		else if ((type != Ticketing.PREGNANT || type != Ticketing.MULTICHILD) && count > 1) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
 			sum = saleprice * 2 + price * (count - 2); // 동반적용 우대할인
 		} else sum = saleprice + price * (count - 1); // 우대할인
 
