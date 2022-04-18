@@ -19,7 +19,7 @@ public class PrintUI { // for print
 		return idata.checkTwoChoice();
 	}
 
-	protected void printTickets(int sum, int lastline, int[][] orderList) {
+	protected void printTickets(int sum, int lastline, int[][] orderList) { // 발권 종료후, 발권한 모든 티켓들 출력
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
 
@@ -30,13 +30,13 @@ public class PrintUI { // for print
 			int count = orderList[idx][3];
 			int price = orderList[idx][4];
 			int sales = orderList[idx][5];
-
+			// 종합 or 파크이용권
 			if (typeAll == 1) System.out.printf("%10s ", "종합이용권");
 			else if (typeAll == 2) System.out.printf("%10s ", "파크이용권");
-
+			// 종일권 or 오후권
 			if (typeDay == 1) System.out.printf("%6s ", "1DAY");
 			else if (typeDay == 2) System.out.printf("%6s ", "After4");
-
+			// 연령
 			if (age == OLD) {
 				System.out.printf("%6s ", "노인");
 			} else if (age == ADULT) { // 어른
@@ -47,9 +47,9 @@ public class PrintUI { // for print
 				System.out.printf("%6s ", "어린이");
 			} else
 				System.out.printf("%6s ", "베이비");
-
+			// 티켓수, 티켓가격(할인적용)
 			System.out.printf("X%-6d %-10d    ", count, price);
-
+			// 우대권 종류
 			if (sales == NONE) System.out.printf("*우대적용 없음\n");
 			else {
 				if (sales == DISABLE) System.out.printf("*장애인 ");
@@ -67,7 +67,7 @@ public class PrintUI { // for print
 		System.out.println("==============================================================\n");
 	}
 
-	protected int printReapeat(int sum) {
+	protected int printReapeat(int sum) { // 발권 지속여부
 		System.out.println("  가격은 " + sum + " 원 입니다.");
 		System.out.println("  감사합니다.\n");
 
@@ -78,7 +78,7 @@ public class PrintUI { // for print
 		return idata.checkTwoChoice();
 	}
 
-	protected int inputEnd() {
+	protected int inputEnd() { // 프로그램 진행 or 새 주문
 		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : ");
 		InputData idata = new InputData();
 		return idata.checkTwoChoice();

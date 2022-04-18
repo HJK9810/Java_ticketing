@@ -23,12 +23,12 @@ public class SaveVals { // save & make csv files
 	protected void inputFile(int lastline) {
 		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd");
 		Date date = new Date();
-		String today = dateformat.format(date);
+		String today = dateformat.format(date); // 오늘날짜
 		try {
 			FileWriter fw = new FileWriter("C:\\Users\\A_013\\Documents\\C코드\\ticketing\\report.csv", true);
-			StringBuilder str = new StringBuilder();
+			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 			for (int idx = 0; idx < lastline; idx++) {
-				int[] list = Ticketing.orderList[idx];
+				int[] list = Ticketing.orderList[idx]; // 일일히 접속하지 않기 위해 배열 재정의
 				int typeAll = list[0];
 				int typeDay = list[1];
 				int age = list[2];
@@ -36,7 +36,7 @@ public class SaveVals { // save & make csv files
 				int price = list[4];
 				int sales = list[5];
 
-				str.append(today + ",");
+				str.append(today + ","); // 오늘날짜 입력
 				// 이용권
 				if (typeAll == 1) str.append(String.format("%-7s,", "종합이용권"));
 				else if (typeAll == 2) str.append(String.format("%-7s,", "파크이용권"));
@@ -59,11 +59,11 @@ public class SaveVals { // save & make csv files
 				else if (sales == PREGNANT) str.append("임산부\n");
 				else if (sales == MULTICHILD) str.append("다둥이\n");
 				
-				fw.write(str.toString());
-				str.setLength(0);
+				fw.write(str.toString()); // 해당 문장 string전환 & 파일 입력
+				str.setLength(0); // stringbuilder 초기화
 			}
 
-			fw.close();
+			fw.close(); // 파일닫기
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
