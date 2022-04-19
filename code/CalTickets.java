@@ -70,14 +70,14 @@ public class CalTickets { // calculate all
 		return sum;
 	}
 	
-	protected int repeatFunc() {
-		InputData input = new InputData();
-		PrintUI pui = new PrintUI();
-		CalTickets calc = new CalTickets();
-		SaveVals save = new SaveVals();
+	protected int repeatFunc() { //  main에서 반복되던 함수 분리
+		InputData input = new InputData(); // 입력용
+		PrintUI pui = new PrintUI(); // ui 출력용
+		CalTickets calc = new CalTickets(); // 계산용
+		SaveVals save = new SaveVals(); // 데이터 저장 & 파일 저장용
 		OrderData orderitem; // 정의
 
-		int totalSum = 0;
+		int totalSum = 0; // '한번에' 발급한 전체 티켓값 총합
 		while (true) {
 			orderitem = new OrderData(); // 새로 생성
 			
@@ -94,7 +94,7 @@ public class CalTickets { // calculate all
 			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
 			totalSum += orderitem.sum; // 누적총합
 			int check = pui.printReapeat(orderitem.sum); // 추가발권질문
-			if (check == StaticValue.END) break;
+			if (check == StaticValue.END) break; // 반복문 out
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
 		save.inputFile(); // 해당 파일에 입력

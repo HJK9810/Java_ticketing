@@ -11,14 +11,14 @@ public class SaveVals { // save & make csv files
 		Ticketing.orderList.add(orderItem); // arraylist에 해당 값들 input
 	}
 
-	protected void inputFile() {
-		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd");
+	protected void inputFile() { // 파일에 입력한 값들 이어쓰기
+		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd"); // 날짜 폼 지정
 		Date date = new Date();
 		String today = dateformat.format(date); // 오늘날짜
 		try {
 			FileWriter fw = new FileWriter("C:\\Users\\A_013\\Documents\\C코드\\ticketing\\report.csv", true);
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
-			for (OrderData item : Ticketing.orderList) {
+			for (OrderData item : Ticketing.orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
 				// 이용권
 				if (item.ticketType == StaticValue.ALL_TICKET) str.append(String.format("%-7s,", "종합이용권"));

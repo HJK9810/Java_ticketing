@@ -20,7 +20,7 @@ public class PrintUI { // for print
 		StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
-		for (OrderData item : Ticketing.orderList) {
+		for (OrderData item : Ticketing.orderList) { // forEach구문 사용
 			// 종합 or 파크이용권
 			if (item.ticketType == StaticValue.ALL_TICKET) str.append(String.format("%10s", "종합이용권"));
 			else if (item.ticketType == StaticValue.PARK_TICKET) str.append(String.format("%10s", "파크이용권"));
@@ -28,7 +28,7 @@ public class PrintUI { // for print
 			if (item.ticketDay == StaticValue.ALL_DAY) str.append(String.format("%6s", "1DAY"));
 			else if (item.ticketDay == StaticValue.AFTER4) str.append(String.format("%6s", "After4"));
 			// 연령
-			if (item.age == StaticValue.OLD) {
+			if (item.age == StaticValue.OLD) { // 노인
 				str.append(String.format("%6s", "노인"));
 			} else if (item.age == StaticValue.ADULT) { // 어른
 				str.append(String.format("%6s", "어른"));
@@ -36,7 +36,7 @@ public class PrintUI { // for print
 				str.append(String.format("%6s", "청소년"));
 			} else if (item.age == StaticValue.CHILD) { // 어린이
 				str.append(String.format("%6s", "어린이"));
-			} else
+			} else // 유아 - 베이비
 				str.append(String.format("%6s", "베이비"));
 			// 티켓수, 티켓가격(할인적용)
 			str.append(String.format("X%-6d %-10d    ", item.orderCount, item.price));
@@ -51,7 +51,7 @@ public class PrintUI { // for print
 
 				str.append("우대적용");
 			}
-			System.out.println(str);
+			System.out.println(str); // console에 출력
 			str.setLength(0); // stringbuilder 초기화
 		}
 
@@ -64,7 +64,7 @@ public class PrintUI { // for print
 		System.out.println("  가격은 " + sum + " 원 입니다."); // 해당 티켓 총 합 = 티켓발권수 * 가격
 		System.out.println("  감사합니다.\n");
 
-		System.out.println("  계속 발권 하시겠습니까?");
+		System.out.println("  계속 발권 하시겠습니까?"); // 추가 발권여부 질문
 		System.out.println("\t1. 티켓발권\n\t2. 종료");
 
 		InputData idata = new InputData();
@@ -72,7 +72,7 @@ public class PrintUI { // for print
 	}
 
 	protected int inputEnd() { // 프로그램 진행 or 새 주문
-		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : ");
+		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : "); // 해당 프로그램 종료여부
 		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
