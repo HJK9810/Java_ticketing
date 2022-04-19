@@ -21,26 +21,26 @@ public class SaveVals { // save & make csv files
 			for (OrderData item : Ticketing.orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
 				// 이용권
-				if (item.ticketType == StaticValue.ALL_TICKET) str.append(String.format("%-7s,", "종합이용권"));
-				else if (item.ticketType == StaticValue.PARK_TICKET) str.append(String.format("%-7s,", "파크이용권"));
+				if (item.getTicketType() == StaticValue.ALL_TICKET) str.append(String.format("%-7s,", "종합이용권"));
+				else if (item.getTicketType() == StaticValue.PARK_TICKET) str.append(String.format("%-7s,", "파크이용권"));
 				// 권종
-				if (item.ticketDay == StaticValue.ALL_DAY) str.append(String.format("%-6s,", "1DAY"));
-				else if (item.ticketDay == StaticValue.AFTER4) str.append(String.format("%-6s,", "After4"));
+				if (item.getTicketDay() == StaticValue.ALL_DAY) str.append(String.format("%-6s,", "1DAY"));
+				else if (item.getTicketDay() == StaticValue.AFTER4) str.append(String.format("%-6s,", "After4"));
 				// 연령
-				if (item.age == StaticValue.OLD) str.append(String.format("%-4s,", "노인"));
-				else if (item.age == StaticValue.ADULT) str.append(String.format("%-4s,", "어른")); // 어른
-				else if (item.age == StaticValue.TEEN) str.append(String.format("%-4s,", "청소년")); // 청소년
-				else if (item.age == StaticValue.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
+				if (item.getAge() == StaticValue.OLD) str.append(String.format("%-4s,", "노인"));
+				else if (item.getAge() == StaticValue.ADULT) str.append(String.format("%-4s,", "어른")); // 어른
+				else if (item.getAge() == StaticValue.TEEN) str.append(String.format("%-4s,", "청소년")); // 청소년
+				else if (item.getAge() == StaticValue.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
 				else str.append(String.format("%-4s,", "베이비"));
 				// 수량 & 가격
-				str.append(String.format("%d,%d,", item.orderCount, item.sum));
+				str.append(String.format("%d,%d,", item.getOrderCount(), item.getSum()));
 				// 우대사항
-				if (item.adventageType == StaticValue.NONE) str.append("없음\n");
-				else if (item.adventageType == StaticValue.DISABLE) str.append("장애인\n");
-				else if (item.adventageType == StaticValue.MERIT) str.append("국가유공자\n");
-				else if (item.adventageType == StaticValue.VACSOLD) str.append("휴가장병\n");
-				else if (item.adventageType == StaticValue.PREGNANT) str.append("임산부\n");
-				else if (item.adventageType == StaticValue.MULTICHILD) str.append("다둥이\n");
+				if (item.getAdventageType() == StaticValue.NONE) str.append("없음\n");
+				else if (item.getAdventageType() == StaticValue.DISABLE) str.append("장애인\n");
+				else if (item.getAdventageType() == StaticValue.MERIT) str.append("국가유공자\n");
+				else if (item.getAdventageType() == StaticValue.VACSOLD) str.append("휴가장병\n");
+				else if (item.getAdventageType() == StaticValue.PREGNANT) str.append("임산부\n");
+				else if (item.getAdventageType() == StaticValue.MULTICHILD) str.append("다둥이\n");
 				
 				fw.write(str.toString()); // 해당 문장 string전환 & 파일 입력
 				str.setLength(0); // stringbuilder 초기화

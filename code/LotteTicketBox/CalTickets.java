@@ -43,14 +43,14 @@ public class CalTickets { // calculate all
 		int price = 0; // 티켓값
 		int idx = 0; // 가격확인용
 
-		if (orderitem.ticketType == StaticValue.ALL_TICKET) idx = orderitem.ticketDay - 1; // index값 0, 1
-		else if (orderitem.ticketType == StaticValue.PARK_TICKET) idx = orderitem.ticketDay + 1; // index값 2, 3
+		if (orderitem.getTicketType() == StaticValue.ALL_TICKET) idx = orderitem.getTicketDay() - 1; // index값 0, 1
+		else if (orderitem.getTicketType() == StaticValue.PARK_TICKET) idx = orderitem.getTicketDay() + 1; // index값 2, 3
 		// BABY_FEE를 제외한 요금들은 배열에 저장된상태
-		if (orderitem.age == StaticValue.BABY) price = StaticValue.BABY_FEE;
-		else if (orderitem.age == StaticValue.OLD) price = StaticValue.CHILD_FEE[idx]; // 65세 이상 = 어린이요금
-		else if (orderitem.age == StaticValue.ADULT) price = StaticValue.ADULT_FEE[idx];
-		else if (orderitem.age == StaticValue.TEEN) price = StaticValue.TEEN_FEE[idx];
-		else if (orderitem.age == StaticValue.CHILD) price = StaticValue.CHILD_FEE[idx];
+		if (orderitem.getAge() == StaticValue.BABY) price = StaticValue.BABY_FEE;
+		else if (orderitem.getAge() == StaticValue.OLD) price = StaticValue.CHILD_FEE[idx]; // 65세 이상 = 어린이요금
+		else if (orderitem.getAge() == StaticValue.ADULT) price = StaticValue.ADULT_FEE[idx];
+		else if (orderitem.getAge() == StaticValue.TEEN) price = StaticValue.TEEN_FEE[idx];
+		else if (orderitem.getAge() == StaticValue.CHILD) price = StaticValue.CHILD_FEE[idx];
 
 		return price;
 	}
@@ -81,19 +81,19 @@ public class CalTickets { // calculate all
 		while (true) {
 			orderitem = new OrderData(); // 새로 생성
 			
-			orderitem.ticketType = pui.ticketTypeAll(); // 종합 or 파크
-			orderitem.ticketDay = pui.ticketTypeDay(); // 종일 or 오후
-			orderitem.IDNumber = input.inputResidentNum(); // 주민번호 앞자리
-			orderitem.orderCount = input.ticketsCount(); // 티켓수
-			orderitem.adventageType = input.ticketSale(orderitem.ticketType); // 우대할인적용
+			orderitem.setTicketType(pui.ticketTypeAll()); // 종합 or 파크
+			orderitem.setTicketDay(pui.ticketTypeDay()); // 종일 or 오후
+			orderitem.setIDNumber(input.inputResidentNum()); // 주민번호 앞자리
+			orderitem.setOrderCount(input.ticketsCount()); // 티켓수
+			orderitem.setAdventageType(input.ticketSale(orderitem.getTicketType())); // 우대할인적용
 
-			orderitem.age = calc.CalAge(orderitem.IDNumber); // 연령대계산
+			orderitem.setAge(calc.CalAge(orderitem.getIDNumber())); // 연령대계산
 			int price = calc.checkTicketPrice(orderitem); // 티켓 정가
-			orderitem.price = calc.salePriceCal(price, orderitem.adventageType); // 할인가 적용 티켓값
-			orderitem.sum = calc.ticketSum(price, orderitem.adventageType, orderitem.orderCount, orderitem.price); // 티켓값 총합
+			orderitem.setPrice(calc.salePriceCal(price, orderitem.getAdventageType())); // 할인가 적용 티켓값
+			orderitem.setSum(calc.ticketSum(price, orderitem.getAdventageType(), orderitem.getOrderCount(), orderitem.getPrice())); // 티켓값 총합
 			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
-			totalSum += orderitem.sum; // 누적총합
-			int check = pui.printReapeat(orderitem.sum); // 추가발권질문
+			totalSum += orderitem.getSum(); // 누적총합
+			int check = pui.printReapeat(orderitem.getSum()); // 추가발권질문
 			if (check == StaticValue.END) break; // 반복문 out
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
