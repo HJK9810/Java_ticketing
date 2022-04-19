@@ -26,11 +26,11 @@ public class InputData { // for inputs
 			try {
 				SimpleDateFormat  dateFormat = new  SimpleDateFormat("yyMMdd");
 				dateFormat.setLenient(false); // 포맷 확인 엄격하게
-				dateFormat.parse(input);
-			} catch (ParseException  e) {
+				dateFormat.parse(input); // 입력한 날짜, 포멧에 맞는지 확인
+			} catch (ParseException  e) { // => 입력한 날짜가 유효하지 않은 경우
 				continue;
 			}
-			break;
+			break; // 입력한것이 유효해 try-catch 빠져나온경우 -> while stop
 		}
 		return input;
 	}
