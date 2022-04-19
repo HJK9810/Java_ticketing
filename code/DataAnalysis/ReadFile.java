@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadFile {
-	protected static String path = "C:\\Users\\A_013\\Documents\\CÄÚµå\\ticketing\\";
+	protected static String path = "C:\\javatest\\ticketing\\";
 	protected void ReadCSV() {
 		SetArg set = new SetArg();
 		try {

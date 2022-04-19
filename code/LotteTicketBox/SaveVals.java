@@ -16,7 +16,7 @@ public class SaveVals { // save & make csv files
 		Date date = new Date();
 		String today = dateformat.format(date); // 오늘날짜
 		try {
-			FileWriter fw = new FileWriter("C:\\Users\\A_013\\Documents\\C코드\\ticketing\\report.csv", true);
+			FileWriter fw = new FileWriter("C:\\javatest\\ticketing\\report.csv", true);
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 			for (OrderData item : Ticketing.orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
