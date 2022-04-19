@@ -1,7 +1,10 @@
 package LotteTicketBox;
 
+import java.util.ArrayList;
+
 public class Ticketing { // main for ticketing programm
-	protected static int[][] orderList = new int[100][6]; // 티켓발권용 배열
+//	protected static int[][] orderList = new int[100][6];
+	protected static ArrayList<OrderData> orderList = new ArrayList<>(); // 티켓발권용 배열
 	
 	public static void main(String[] args) {
 		CalTickets calc = new CalTickets();

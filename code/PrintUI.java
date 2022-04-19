@@ -16,45 +16,37 @@ public class PrintUI { // for print
 		return idata.checkTwoChoice();
 	}
 
-	protected void printTickets(int sum, int lastline) { // 발권 종료후, 발권한 모든 티켓들 출력
+	protected void printTickets(int sum) { // 발권 종료후, 발권한 모든 티켓들 출력
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
-		int[][] orderlist = Ticketing.orderList; // 계속 왔다갔다 방지를 위한 배열 재정의
-		for (int idx = 0; idx < lastline; idx++) {
-			int[] line = orderlist[idx];
-			int typeAll = line[0];
-			int typeDay = line[1];
-			int age = line[2];
-			int count = line[3];
-			int price = line[4];
-			int sales = line[5];
+		for (OrderData item : Ticketing.orderList) {
 			// 종합 or 파크이용권
-			if (typeAll == 1) System.out.printf("%10s ", "종합이용권");
-			else if (typeAll == 2) System.out.printf("%10s ", "파크이용권");
+			if (item.ticketType == 1) System.out.printf("%10s ", "종합이용권");
+			else if (item.ticketType == 2) System.out.printf("%10s ", "파크이용권");
 			// 종일권 or 오후권
-			if (typeDay == 1) System.out.printf("%6s ", "1DAY");
-			else if (typeDay == 2) System.out.printf("%6s ", "After4");
+			if (item.ticketDay == 1) System.out.printf("%6s ", "1DAY");
+			else if (item.ticketDay == 2) System.out.printf("%6s ", "After4");
 			// 연령
-			if (age == StaticValue.OLD) {
+			if (item.age == StaticValue.OLD) {
 				System.out.printf("%6s ", "노인");
-			} else if (age == StaticValue.ADULT) { // 어른
+			} else if (item.age == StaticValue.ADULT) { // 어른
 				System.out.printf("%6s ", "어른");
-			} else if (age == StaticValue.TEEN) { // 청소년
+			} else if (item.age == StaticValue.TEEN) { // 청소년
 				System.out.printf("%6s ", "청소년");
-			} else if (age == StaticValue.CHILD) { // 어린이
+			} else if (item.age == StaticValue.CHILD) { // 어린이
 				System.out.printf("%6s ", "어린이");
 			} else
 				System.out.printf("%6s ", "베이비");
 			// 티켓수, 티켓가격(할인적용)
-			System.out.printf("X%-6d %-10d    ", count, price);
+			System.out.printf("X%-6d %-10d    ", item.orderCount, item.price);
 			// 우대권 종류
-			if (sales == StaticValue.NONE) System.out.printf("*우대적용 없음\n");
+			if (item.adventageType == StaticValue.NONE) System.out.printf("*우대적용 없음\n");
 			else {
-				if (sales == StaticValue.DISABLE) System.out.printf("*장애인 ");
-				else if (sales == StaticValue.MERIT) System.out.printf("*국가유공자 ");
-				else if (sales == StaticValue.VACSOLD) System.out.printf("*휴가장병 ");
-				else if (sales == StaticValue.PREGNANT) System.out.printf("*임산부 ");
-				else if (sales == StaticValue.MULTICHILD) System.out.printf("*다둥이 ");
+				if (item.adventageType == StaticValue.DISABLE) System.out.printf("*장애인 ");
+				else if (item.adventageType == StaticValue.MERIT) System.out.printf("*국가유공자 ");
+				else if (item.adventageType == StaticValue.VACSOLD) System.out.printf("*휴가장병 ");
+				else if (item.adventageType == StaticValue.PREGNANT) System.out.printf("*임산부 ");
+				else if (item.adventageType == StaticValue.MULTICHILD) System.out.printf("*다둥이 ");
 
 				System.out.printf("우대적용\n");
 			}

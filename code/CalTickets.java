@@ -1,23 +1,25 @@
 package LotteTicketBox;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class CalTickets { // calculate all
 	final int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19, MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;
 
-	protected int CalAge(int residentNum) { // calculate how old
+	protected int CalAge(String residentNum) { // calculate how old
 		SimpleDateFormat format = new SimpleDateFormat("YYYYMMdd");
 		Date date = new Date();
 		String today = format.format(date);
+		
 		// for calculate to change int
 		int todayYear = Integer.parseInt(today.substring(0, 4));
 		int todayMonth = Integer.parseInt(today.substring(4, 6));
 		int tdate = Integer.parseInt(today.substring(6));
 
-		int yourYear = residentNum / 10000; // 주민번호 = 년도 뒤의 두자리 + 월 두자리+ 날짜 두자리
-		int yourMonth = residentNum % 10000 / 100;
-		int yourDay = residentNum % 100;
+		int yourYear = Integer.parseInt(residentNum.substring(0, 2));
+		int yourMonth = Integer.parseInt(residentNum.substring(2, 4));
+		int yourDay = Integer.parseInt(residentNum.substring(4));
 
 		if (todayYear % 100 < yourYear) yourYear += 1900; // 올해 년도 뒤의 두자리보다 크다? 1900년대생
 		else yourYear += 2000; // 작거나 같다? 2000년대생
@@ -40,7 +42,7 @@ public class CalTickets { // calculate all
 		return age;
 	}
 
-	protected int checkTicketPrice(int typeAll, int typeDay, int age) { // 이용권 종류와 나이에 따른 티켓정가
+	protected int checkTicketPrice(OrderData orderitem) { // 이용권 종류와 나이에 따른 티켓정가
 		final int[] ADULT_FEE = { 62000, 50000, 59000, 47000 }; // 종합-종일, 종합-오후, 파크-종일, 파크-오후
 		final int[] TEEN_FEE = { 54000, 43000, 52000, 41000 };
 		final int[] CHILD_FEE = { 47000, 36000, 46000, 35000 };
@@ -48,14 +50,14 @@ public class CalTickets { // calculate all
 		int price = 0; // 티켓값
 		int idx = 0; // 가격확인용
 
-		if (typeAll == 1) idx = typeDay - 1; // index값 0, 1
-		else if (typeAll == 2) idx = typeDay + 1; // index값 2, 3
+		if (orderitem.ticketType == 1) idx = orderitem.ticketDay - 1; // index값 0, 1
+		else if (orderitem.ticketType == 2) idx = orderitem.ticketDay + 1; // index값 2, 3
 
-		if (age == StaticValue.BABY) price = BABY_FEE;
-		else if (age == StaticValue.OLD) price = CHILD_FEE[idx]; // 65세 이상 = 어린이요금
-		else if (age == StaticValue.ADULT) price = ADULT_FEE[idx];
-		else if (age == StaticValue.TEEN) price = TEEN_FEE[idx];
-		else if (age == StaticValue.CHILD) price = CHILD_FEE[idx];
+		if (orderitem.age == StaticValue.BABY) price = BABY_FEE;
+		else if (orderitem.age == StaticValue.OLD) price = CHILD_FEE[idx]; // 65세 이상 = 어린이요금
+		else if (orderitem.age == StaticValue.ADULT) price = ADULT_FEE[idx];
+		else if (orderitem.age == StaticValue.TEEN) price = TEEN_FEE[idx];
+		else if (orderitem.age == StaticValue.CHILD) price = CHILD_FEE[idx];
 
 		return price;
 	}
@@ -81,27 +83,29 @@ public class CalTickets { // calculate all
 		PrintUI pui = new PrintUI();
 		CalTickets calc = new CalTickets();
 		SaveVals save = new SaveVals();
-		
-		int totalSum = 0; // 모든 티켓값 총합
-		int position = 0;
-		while (true) {
-			int typeAll = pui.ticketTypeAll(); // 종합 or 파크
-			int typeDay = pui.ticketTypeDay(); // 종일 or 오후
-			int residentNum = input.inputResidentNum(); // 주민번호 앞자리
-			int count = input.ticketsCount(); // 티켓수
-			int forsales = input.ticketSale(typeAll); // 우대할인적용
+		OrderData orderitem;
 
-			int age = calc.CalAge(residentNum); // 연령대계산
-			int price = calc.checkTicketPrice(typeAll, typeDay, age); // 티켓 정가
-			int saleprice = calc.salePriceCal(price, forsales); // 할인가 적용 티켓값
-			int sum = calc.ticketSum(price, forsales, count, saleprice); // 티켓값 총합
-			position = save.saveOrder(typeAll, typeDay, age, count, saleprice, forsales, position);
+		int totalSum = 0;
+		while (true) {
+			orderitem = new OrderData(); // 새로 생성
+			
+			orderitem.ticketType = pui.ticketTypeAll(); // 종합 or 파크
+			orderitem.ticketDay = pui.ticketTypeDay(); // 종일 or 오후
+			orderitem.IDNumber = input.inputResidentNum(); // 주민번호 앞자리
+			orderitem.orderCount = input.ticketsCount(); // 티켓수
+			orderitem.adventageType = input.ticketSale(orderitem.ticketType); // 우대할인적용
+
+			orderitem.age = calc.CalAge(orderitem.IDNumber); // 연령대계산
+			int price = calc.checkTicketPrice(orderitem); // 티켓 정가
+			orderitem.price = calc.salePriceCal(price, orderitem.adventageType); // 할인가 적용 티켓값
+			int sum = calc.ticketSum(price, orderitem.adventageType, orderitem.orderCount, orderitem.price); // 티켓값 총합
+			save.saveOrder(orderitem);
 			totalSum += sum;
 			int check = pui.printReapeat(sum); // 추가발권질문
 			if (check == 2) break;
 		}
-		pui.printTickets(totalSum, position); // 발권한 티켓 종류 & 수 & 가격등 출력
-		save.inputFile(position); // 해당 파일에 입력
+		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
+		save.inputFile(); // 해당 파일에 입력
 		
 		return pui.inputEnd(); // 종료질문
 	}
