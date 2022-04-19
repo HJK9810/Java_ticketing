@@ -22,11 +22,11 @@ public class PrintUI { // for print
 		System.out.println("===========================롯데월드===========================");
 		for (OrderData item : Ticketing.orderList) {
 			// 종합 or 파크이용권
-			if (item.ticketType == 1) str.append(String.format("%10s", "종합이용권"));
-			else if (item.ticketType == 2) str.append(String.format("%10s", "파크이용권"));
+			if (item.ticketType == StaticValue.ALL_TICKET) str.append(String.format("%10s", "종합이용권"));
+			else if (item.ticketType == StaticValue.PARK_TICKET) str.append(String.format("%10s", "파크이용권"));
 			// 종일권 or 오후권
-			if (item.ticketDay == 1) str.append(String.format("%6s", "1DAY"));
-			else if (item.ticketDay == 2) str.append(String.format("%6s", "After4"));
+			if (item.ticketDay == StaticValue.ALL_DAY) str.append(String.format("%6s", "1DAY"));
+			else if (item.ticketDay == StaticValue.AFTER4) str.append(String.format("%6s", "After4"));
 			// 연령
 			if (item.age == StaticValue.OLD) {
 				str.append(String.format("%6s", "노인"));

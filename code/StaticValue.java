@@ -1,6 +1,12 @@
 package LotteTicketBox;
 
 public final class StaticValue { // 상수용
+	// 티켓종류
+	final static int ALL_TICKET = 1, PARK_TICKET = 2, ALL_DAY = 1, AFTER4 = 2;
+	// 티켓가능수
+	final static int MIN_COUNT = 1, MAX_COUNT = 10;
+	// 지속 or not
+	final static int CONTINUE = 1, END = 2;	
 	// 나이범위용 상수
 	final static int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19; 
 	final static int MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;

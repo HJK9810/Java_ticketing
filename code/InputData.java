@@ -42,7 +42,7 @@ public class InputData { // for inputs
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt();
-		} while (input > 11 || input < 1); // 티켓 주문가능수는 최대 10개
+		} while (input > StaticValue.MAX_COUNT || input < StaticValue.MAX_COUNT); // 티켓 주문가능수는 최대 10개
 		return input;
 	}
 
@@ -59,12 +59,12 @@ public class InputData { // for inputs
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while (input < 1 || input > 6); // 종합이용권일경우, 우대사항은 6번까지 가능
+			} while (input < StaticValue.NONE || input > StaticValue.MULTICHILD); // 종합이용권일경우, 우대사항은 6번까지 가능
 		} else {
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while (input < 1 || input > 3); // 파크이용권일경우, 우대사항은 3번까지 가능
+			} while (input < StaticValue.NONE || input > StaticValue.MERIT); // 파크이용권일경우, 우대사항은 3번까지 가능
 		}
 
 		return input;

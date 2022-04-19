@@ -21,11 +21,11 @@ public class SaveVals { // save & make csv files
 			for (OrderData item : Ticketing.orderList) {
 				str.append(today + ","); // 오늘날짜 입력
 				// 이용권
-				if (item.ticketType == 1) str.append(String.format("%-7s,", "종합이용권"));
-				else if (item.ticketType == 2) str.append(String.format("%-7s,", "파크이용권"));
+				if (item.ticketType == StaticValue.ALL_TICKET) str.append(String.format("%-7s,", "종합이용권"));
+				else if (item.ticketType == StaticValue.PARK_TICKET) str.append(String.format("%-7s,", "파크이용권"));
 				// 권종
-				if (item.ticketDay == 1) str.append(String.format("%-6s,", "1DAY"));
-				else if (item.ticketDay == 2) str.append(String.format("%-6s,", "After4"));
+				if (item.ticketDay == StaticValue.ALL_DAY) str.append(String.format("%-6s,", "1DAY"));
+				else if (item.ticketDay == StaticValue.AFTER4) str.append(String.format("%-6s,", "After4"));
 				// 연령
 				if (item.age == StaticValue.OLD) str.append(String.format("%-4s,", "노인"));
 				else if (item.age == StaticValue.ADULT) str.append(String.format("%-4s,", "어른")); // 어른

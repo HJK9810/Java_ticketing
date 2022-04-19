@@ -43,8 +43,8 @@ public class CalTickets { // calculate all
 		int price = 0; // 티켓값
 		int idx = 0; // 가격확인용
 
-		if (orderitem.ticketType == 1) idx = orderitem.ticketDay - 1; // index값 0, 1
-		else if (orderitem.ticketType == 2) idx = orderitem.ticketDay + 1; // index값 2, 3
+		if (orderitem.ticketType == StaticValue.ALL_TICKET) idx = orderitem.ticketDay - 1; // index값 0, 1
+		else if (orderitem.ticketType == StaticValue.PARK_TICKET) idx = orderitem.ticketDay + 1; // index값 2, 3
 		// BABY_FEE를 제외한 요금들은 배열에 저장된상태
 		if (orderitem.age == StaticValue.BABY) price = StaticValue.BABY_FEE;
 		else if (orderitem.age == StaticValue.OLD) price = StaticValue.CHILD_FEE[idx]; // 65세 이상 = 어린이요금
@@ -63,7 +63,7 @@ public class CalTickets { // calculate all
 		int sum = 0;
 
 		if (type == StaticValue.NONE) sum = price * count; // 할인 미적용
-		else if ((type != StaticValue.PREGNANT || type != StaticValue.MULTICHILD) && count > 1) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
+		else if ((type != StaticValue.PREGNANT || type != StaticValue.MULTICHILD) && count > StaticValue.NONE) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
 			sum = saleprice * 2 + price * (count - 2); // 동반적용 우대할인
 		} else sum = saleprice + price * (count - 1); // 우대할인
 
@@ -94,7 +94,7 @@ public class CalTickets { // calculate all
 			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
 			totalSum += sum; // 누적총합
 			int check = pui.printReapeat(sum); // 추가발권질문
-			if (check == 2) break;
+			if (check == StaticValue.END) break;
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
 		save.inputFile(); // 해당 파일에 입력
