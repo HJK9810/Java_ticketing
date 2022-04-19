@@ -7,5 +7,6 @@ public class OrderData {
 	protected int age; // 나이타입
 	protected int orderCount; // 티켓수 - max = 10
 	protected int price; // 할인 미적용 티켓값
+	protected int sum; // 티켓값
 	protected int adventageType; // 우대사항
 }

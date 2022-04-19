@@ -90,10 +90,10 @@ public class CalTickets { // calculate all
 			orderitem.age = calc.CalAge(orderitem.IDNumber); // 연령대계산
 			int price = calc.checkTicketPrice(orderitem); // 티켓 정가
 			orderitem.price = calc.salePriceCal(price, orderitem.adventageType); // 할인가 적용 티켓값
-			int sum = calc.ticketSum(price, orderitem.adventageType, orderitem.orderCount, orderitem.price); // 티켓값 총합
+			orderitem.sum = calc.ticketSum(price, orderitem.adventageType, orderitem.orderCount, orderitem.price); // 티켓값 총합
 			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
-			totalSum += sum; // 누적총합
-			int check = pui.printReapeat(sum); // 추가발권질문
+			totalSum += orderitem.sum; // 누적총합
+			int check = pui.printReapeat(orderitem.sum); // 추가발권질문
 			if (check == StaticValue.END) break;
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력

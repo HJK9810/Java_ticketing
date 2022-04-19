@@ -22,7 +22,7 @@ public class InputData { // for inputs
 
 		while (true) {
 			System.out.print("\t\t => ");
-			input = scanner.nextLine(); // 년도 2자리 + 월 2자리 + 날짜 2자리
+			input = scanner.next(); // 년도 2자리 + 월 2자리 + 날짜 2자리
 			try {
 				SimpleDateFormat  dateFormat = new  SimpleDateFormat("yyMMdd");
 				dateFormat.setLenient(false); // 포맷 확인 엄격하게
@@ -42,7 +42,7 @@ public class InputData { // for inputs
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt();
-		} while (input > StaticValue.MAX_COUNT || input < StaticValue.MAX_COUNT); // 티켓 주문가능수는 최대 10개
+		} while (input > StaticValue.MAX_COUNT || input < StaticValue.MIN_COUNT); // 티켓 주문가능수는 최대 10개
 		return input;
 	}
 

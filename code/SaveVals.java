@@ -33,7 +33,7 @@ public class SaveVals { // save & make csv files
 				else if (item.age == StaticValue.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
 				else str.append(String.format("%-4s,", "베이비"));
 				// 수량 & 가격
-				str.append(String.format("%d,%d,", item.orderCount, item.price));
+				str.append(String.format("%d,%d,", item.orderCount, item.sum));
 				// 우대사항
 				if (item.adventageType == StaticValue.NONE) str.append("없음\n");
 				else if (item.adventageType == StaticValue.DISABLE) str.append("장애인\n");

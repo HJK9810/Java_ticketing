@@ -41,7 +41,7 @@ public class PrintUI { // for print
 			// 티켓수, 티켓가격(할인적용)
 			str.append(String.format("X%-6d %-10d    ", item.orderCount, item.price));
 			// 우대권 종류
-			if (item.adventageType == StaticValue.NONE) str.append("*우대적용 없음\n");
+			if (item.adventageType == StaticValue.NONE) str.append("*우대적용 없음");
 			else {
 				if (item.adventageType == StaticValue.DISABLE) str.append("*장애인 ");
 				else if (item.adventageType == StaticValue.MERIT) str.append("*국가유공자 ");
@@ -49,13 +49,13 @@ public class PrintUI { // for print
 				else if (item.adventageType == StaticValue.PREGNANT) str.append("*임산부 ");
 				else if (item.adventageType == StaticValue.MULTICHILD) str.append("*다둥이 ");
 
-				str.append("우대적용\n");
+				str.append("우대적용");
 			}
 			System.out.println(str);
 			str.setLength(0); // stringbuilder 초기화
 		}
 
-		System.out.println("\t입장료 총액은 " + sum + "원 입니다."); // sum = totalSum
+		System.out.println("\n\t입장료 총액은 " + sum + "원 입니다."); // sum = totalSum
 		System.out.println(" ** 임산부와 다둥이행복카드를 제외한 우대사항은 동반 1인까지 우대가 적용됩니다.");
 		System.out.println("==============================================================\n");
 	}
