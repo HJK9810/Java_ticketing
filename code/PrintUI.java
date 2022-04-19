@@ -17,42 +17,44 @@ public class PrintUI { // for print
 	}
 
 	protected void printTickets(int sum) { // 발권 종료후, 발권한 모든 티켓들 출력
+		StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
 		for (OrderData item : Ticketing.orderList) {
 			// 종합 or 파크이용권
-			if (item.ticketType == 1) System.out.printf("%10s ", "종합이용권");
-			else if (item.ticketType == 2) System.out.printf("%10s ", "파크이용권");
+			if (item.ticketType == 1) str.append(String.format("%10s", "종합이용권"));
+			else if (item.ticketType == 2) str.append(String.format("%10s", "파크이용권"));
 			// 종일권 or 오후권
-			if (item.ticketDay == 1) System.out.printf("%6s ", "1DAY");
-			else if (item.ticketDay == 2) System.out.printf("%6s ", "After4");
+			if (item.ticketDay == 1) str.append(String.format("%6s", "1DAY"));
+			else if (item.ticketDay == 2) str.append(String.format("%6s", "After4"));
 			// 연령
 			if (item.age == StaticValue.OLD) {
-				System.out.printf("%6s ", "노인");
+				str.append(String.format("%6s", "노인"));
 			} else if (item.age == StaticValue.ADULT) { // 어른
-				System.out.printf("%6s ", "어른");
+				str.append(String.format("%6s", "어른"));
 			} else if (item.age == StaticValue.TEEN) { // 청소년
-				System.out.printf("%6s ", "청소년");
+				str.append(String.format("%6s", "청소년"));
 			} else if (item.age == StaticValue.CHILD) { // 어린이
-				System.out.printf("%6s ", "어린이");
+				str.append(String.format("%6s", "어린이"));
 			} else
-				System.out.printf("%6s ", "베이비");
+				str.append(String.format("%6s", "베이비"));
 			// 티켓수, 티켓가격(할인적용)
-			System.out.printf("X%-6d %-10d    ", item.orderCount, item.price);
+			str.append(String.format("X%-6d %-10d    ", item.orderCount, item.price));
 			// 우대권 종류
-			if (item.adventageType == StaticValue.NONE) System.out.printf("*우대적용 없음\n");
+			if (item.adventageType == StaticValue.NONE) str.append("*우대적용 없음\n");
 			else {
-				if (item.adventageType == StaticValue.DISABLE) System.out.printf("*장애인 ");
-				else if (item.adventageType == StaticValue.MERIT) System.out.printf("*국가유공자 ");
-				else if (item.adventageType == StaticValue.VACSOLD) System.out.printf("*휴가장병 ");
-				else if (item.adventageType == StaticValue.PREGNANT) System.out.printf("*임산부 ");
-				else if (item.adventageType == StaticValue.MULTICHILD) System.out.printf("*다둥이 ");
+				if (item.adventageType == StaticValue.DISABLE) str.append("*장애인 ");
+				else if (item.adventageType == StaticValue.MERIT) str.append("*국가유공자 ");
+				else if (item.adventageType == StaticValue.VACSOLD) str.append("*휴가장병 ");
+				else if (item.adventageType == StaticValue.PREGNANT) str.append("*임산부 ");
+				else if (item.adventageType == StaticValue.MULTICHILD) str.append("*다둥이 ");
 
-				System.out.printf("우대적용\n");
+				str.append("우대적용\n");
 			}
+			System.out.println(str);
 		}
 
-		System.out.println("\n\t입장료 총액은 " + sum + "원 입니다.");
+		System.out.println("\t입장료 총액은 " + sum + "원 입니다.");
 		System.out.println(" ** 임산부와 다둥이행복카드를 제외한 우대사항은 동반 1인까지 우대가 적용됩니다.");
 		System.out.println("==============================================================\n");
 	}
