@@ -5,8 +5,8 @@ public class PrintUI { // for print
 	protected int ticketTypeAll() { // 종합이용권 or 파크이용권 선택
 		System.out.println("  권종을 선택하세요.");
 		System.out.println("\t1. 종합이용권\n\t2. 파크이용권");
-		InputData idata = new InputData();
-		return idata.checkTwoChoice();
+		InputData idata = new InputData(); 
+		return idata.checkTwoChoice(); // 숫자 입력받고 유효 확인
 	}
 
 	protected int ticketTypeDay() { // 종일권 or 오후권 선택
@@ -55,13 +55,13 @@ public class PrintUI { // for print
 			str.setLength(0); // stringbuilder 초기화
 		}
 
-		System.out.println("\t입장료 총액은 " + sum + "원 입니다.");
+		System.out.println("\t입장료 총액은 " + sum + "원 입니다."); // sum = totalSum
 		System.out.println(" ** 임산부와 다둥이행복카드를 제외한 우대사항은 동반 1인까지 우대가 적용됩니다.");
 		System.out.println("==============================================================\n");
 	}
 
 	protected int printReapeat(int sum) { // 발권 지속여부
-		System.out.println("  가격은 " + sum + " 원 입니다.");
+		System.out.println("  가격은 " + sum + " 원 입니다."); // 해당 티켓 총 합 = 티켓발권수 * 가격
 		System.out.println("  감사합니다.\n");
 
 		System.out.println("  계속 발권 하시겠습니까?");

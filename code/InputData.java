@@ -12,7 +12,7 @@ public class InputData { // for inputs
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt();
-		} while (input != 1 && input != 2);
+		} while (input != 1 && input != 2); // 1이나 2가 아닐경우 반복
 		return input;
 	}
 
@@ -46,25 +46,25 @@ public class InputData { // for inputs
 		return input;
 	}
 
-	protected int ticketSale(int type) { // 우대사항선택 - 종일권이 우대사항 수에 관여하기에 파라미터 입력
+	protected int ticketSale(int type) { // 우대사항선택 - 종합이용권이 우대사항 수에 관여하기에 파라미터 입력
 		int input;
 		System.out.println("  우대사항을 선택하세요.");
 		System.out.println("\t1. 없음(나이 우대는 자동처리)");
 		System.out.println("\t2. 장애인");
 		System.out.println("\t3. 국가유공자");
-		if (type == 1) { // 해당 우대사항은 종일권에만 해당
+		if (type == 1) { // 해당 우대사항은 종합이용권에만 해당
 			System.out.println("\t4. 휴가장병");
 			System.out.println("\t5. 임산부");
 			System.out.println("\t6. 다둥이행복카드");
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while (input < 1 || input > 6);
+			} while (input < 1 || input > 6); // 종합이용권일경우, 우대사항은 6번까지 가능
 		} else {
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
-			} while (input < 1 || input > 3);
+			} while (input < 1 || input > 3); // 파크이용권일경우, 우대사항은 3번까지 가능
 		}
 
 		return input;

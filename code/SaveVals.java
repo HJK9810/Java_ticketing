@@ -8,7 +8,7 @@ import java.util.Date;
 public class SaveVals { // save & make csv files
 	
 	protected void saveOrder(OrderData orderItem) {
-		Ticketing.orderList.add(orderItem);
+		Ticketing.orderList.add(orderItem); // arraylist에 해당 값들 input
 	}
 
 	protected void inputFile() {
@@ -47,7 +47,7 @@ public class SaveVals { // save & make csv files
 			}
 
 			fw.close(); // 파일닫기
-		} catch (IOException e) {
+		} catch (IOException e) { // 파일읽고 쓰는동안의 에러체크용
 			e.printStackTrace();
 		}
 	}

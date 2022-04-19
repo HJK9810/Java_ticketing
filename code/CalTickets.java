@@ -13,7 +13,7 @@ public class CalTickets { // calculate all
 		int todayYear = Integer.parseInt(today.substring(0, 4));
 		int todayMonth = Integer.parseInt(today.substring(4, 6));
 		int tdate = Integer.parseInt(today.substring(6));
-
+		// 주민번호는 총 6자리
 		int yourYear = Integer.parseInt(residentNum.substring(0, 2));
 		int yourMonth = Integer.parseInt(residentNum.substring(2, 4));
 		int yourDay = Integer.parseInt(residentNum.substring(4));
@@ -26,7 +26,7 @@ public class CalTickets { // calculate all
 		if (todayMonth < yourMonth) age -= 1; // 생일 달이 지나지 않았을경우
 		else if (todayMonth == yourMonth && tdate >= yourDay) age -= 1; // 생일 달이지만, 날짜가 지나지 않은경우
 
-		return checkAge(age);
+		return checkAge(age); // 현 나이로 나잇대 체크
 	}
 
 	protected int checkAge(int age) { // 나이 체크
@@ -45,7 +45,7 @@ public class CalTickets { // calculate all
 
 		if (orderitem.ticketType == 1) idx = orderitem.ticketDay - 1; // index값 0, 1
 		else if (orderitem.ticketType == 2) idx = orderitem.ticketDay + 1; // index값 2, 3
-
+		// BABY_FEE를 제외한 요금들은 배열에 저장된상태
 		if (orderitem.age == StaticValue.BABY) price = StaticValue.BABY_FEE;
 		else if (orderitem.age == StaticValue.OLD) price = StaticValue.CHILD_FEE[idx]; // 65세 이상 = 어린이요금
 		else if (orderitem.age == StaticValue.ADULT) price = StaticValue.ADULT_FEE[idx];
@@ -56,7 +56,7 @@ public class CalTickets { // calculate all
 	}
 
 	protected int salePriceCal(int price, int type) { // 할인을 적용한 티켓값
-		return (int) (price * StaticValue.percent[type] / 100) * 100;
+		return (int) (price * StaticValue.percent[type] / 100) * 100; // /100 * 100 이유 : 롯데월드 할인가 최소단위는 100원이기 때문
 	}
 
 	protected int ticketSum(int price, int type, int count, int saleprice) { // 티켓값 총 합
@@ -75,7 +75,7 @@ public class CalTickets { // calculate all
 		PrintUI pui = new PrintUI();
 		CalTickets calc = new CalTickets();
 		SaveVals save = new SaveVals();
-		OrderData orderitem;
+		OrderData orderitem; // 정의
 
 		int totalSum = 0;
 		while (true) {
@@ -91,8 +91,8 @@ public class CalTickets { // calculate all
 			int price = calc.checkTicketPrice(orderitem); // 티켓 정가
 			orderitem.price = calc.salePriceCal(price, orderitem.adventageType); // 할인가 적용 티켓값
 			int sum = calc.ticketSum(price, orderitem.adventageType, orderitem.orderCount, orderitem.price); // 티켓값 총합
-			save.saveOrder(orderitem);
-			totalSum += sum;
+			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
+			totalSum += sum; // 누적총합
 			int check = pui.printReapeat(sum); // 추가발권질문
 			if (check == 2) break;
 		}

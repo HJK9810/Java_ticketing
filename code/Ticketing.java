@@ -13,6 +13,6 @@ public class Ticketing { // main for ticketing programm
 		do { // main 간략화
 			isExit = calc.repeatFunc(); // 반복용 while 함수분리
 			orderList = new ArrayList<>(); // 해당 배열 초기화
-		} while (isExit == 1);
+		} while (isExit == 1); // if isExit == 2 => program end
 	}
 }
