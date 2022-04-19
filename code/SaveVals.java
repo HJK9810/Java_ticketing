@@ -41,20 +41,20 @@ public class SaveVals { // save & make csv files
 				if (typeDay == 1) str.append(String.format("%-6s,", "1DAY"));
 				else if (typeDay == 2) str.append(String.format("%-6s,", "After4"));
 				// 연령
-				if (age == Ticketing.OLD) str.append(String.format("%-4s,", "노인"));
-				else if (age == Ticketing.ADULT) str.append(String.format("%-4s,", "어른")); // 어른
-				else if (age == Ticketing.TEEN) str.append(String.format("%-4s,", "청소년")); // 청소년
-				else if (age == Ticketing.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
+				if (age == StaticValue.OLD) str.append(String.format("%-4s,", "노인"));
+				else if (age == StaticValue.ADULT) str.append(String.format("%-4s,", "어른")); // 어른
+				else if (age == StaticValue.TEEN) str.append(String.format("%-4s,", "청소년")); // 청소년
+				else if (age == StaticValue.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
 				else str.append(String.format("%-4s,", "베이비"));
 				// 수량 & 가격
 				str.append(String.format("%d,%d,", count, price));
 				// 우대사항
-				if (sales == Ticketing.NONE) str.append("없음\n");
-				else if (sales == Ticketing.DISABLE) str.append("장애인\n");
-				else if (sales == Ticketing.MERIT) str.append("국가유공자\n");
-				else if (sales == Ticketing.VACSOLD) str.append("휴가장병\n");
-				else if (sales == Ticketing.PREGNANT) str.append("임산부\n");
-				else if (sales == Ticketing.MULTICHILD) str.append("다둥이\n");
+				if (sales == StaticValue.NONE) str.append("없음\n");
+				else if (sales == StaticValue.DISABLE) str.append("장애인\n");
+				else if (sales == StaticValue.MERIT) str.append("국가유공자\n");
+				else if (sales == StaticValue.VACSOLD) str.append("휴가장병\n");
+				else if (sales == StaticValue.PREGNANT) str.append("임산부\n");
+				else if (sales == StaticValue.MULTICHILD) str.append("다둥이\n");
 				
 				fw.write(str.toString()); // 해당 문장 string전환 & 파일 입력
 				str.setLength(0); // stringbuilder 초기화
@@ -62,7 +62,6 @@ public class SaveVals { // save & make csv files
 
 			fw.close(); // 파일닫기
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
