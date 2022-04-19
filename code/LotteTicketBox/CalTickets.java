@@ -30,11 +30,11 @@ public class CalTickets { // calculate all
 	}
 
 	protected int checkAge(int age) { // 나이 체크
-		if (age < StaticValue.MIN_CHILD && age >= StaticValue.MIN_BABY) age = StaticValue.BABY;
-		else if (age > StaticValue.MAX_ADULT) age = StaticValue.OLD;
-		else if (age > StaticValue.MAX_TEEN) age = StaticValue.ADULT;
-		else if (age < StaticValue.MIN_ADULT && age > StaticValue.MAX_CHILD) age = StaticValue.TEEN;
-		else if (age < StaticValue.MIN_TEEN && age >= StaticValue.MIN_CHILD) age = StaticValue.CHILD;
+		if (age < StaticValue.getMinChild() && age >= StaticValue.getMinBaby()) age = StaticValue.getBaby();
+		else if (age > StaticValue.getMaxAdult()) age = StaticValue.getOld();
+		else if (age > StaticValue.getMaxTeen()) age = StaticValue.getAdult();
+		else if (age < StaticValue.getMinAdult() && age > StaticValue.getMaxChild()) age = StaticValue.getTeen();
+		else if (age < StaticValue.getMinTeen() && age >= StaticValue.getMinChild()) age = StaticValue.getChild();
 
 		return age;
 	}
@@ -43,27 +43,27 @@ public class CalTickets { // calculate all
 		int price = 0; // 티켓값
 		int idx = 0; // 가격확인용
 
-		if (orderitem.getTicketType() == StaticValue.ALL_TICKET) idx = orderitem.getTicketDay() - 1; // index값 0, 1
-		else if (orderitem.getTicketType() == StaticValue.PARK_TICKET) idx = orderitem.getTicketDay() + 1; // index값 2, 3
+		if (orderitem.getTicketType() == StaticValue.getAllTicket()) idx = orderitem.getTicketDay() - 1; // index값 0, 1
+		else if (orderitem.getTicketType() == StaticValue.getParkTicket()) idx = orderitem.getTicketDay() + 1; // index값 2, 3
 		// BABY_FEE를 제외한 요금들은 배열에 저장된상태
-		if (orderitem.getAge() == StaticValue.BABY) price = StaticValue.BABY_FEE;
-		else if (orderitem.getAge() == StaticValue.OLD) price = StaticValue.CHILD_FEE[idx]; // 65세 이상 = 어린이요금
-		else if (orderitem.getAge() == StaticValue.ADULT) price = StaticValue.ADULT_FEE[idx];
-		else if (orderitem.getAge() == StaticValue.TEEN) price = StaticValue.TEEN_FEE[idx];
-		else if (orderitem.getAge() == StaticValue.CHILD) price = StaticValue.CHILD_FEE[idx];
+		if (orderitem.getAge() == StaticValue.getBaby()) price = StaticValue.getBabyFee();
+		else if (orderitem.getAge() == StaticValue.getOld()) price = StaticValue.getChildFee()[idx]; // 65세 이상 = 어린이요금
+		else if (orderitem.getAge() == StaticValue.getAdult()) price = StaticValue.getAdultFee()[idx];
+		else if (orderitem.getAge() == StaticValue.getTeen()) price = StaticValue.getTeenFee()[idx];
+		else if (orderitem.getAge() == StaticValue.getChild()) price = StaticValue.getChildFee()[idx];
 
 		return price;
 	}
 
 	protected int salePriceCal(int price, int type) { // 할인을 적용한 티켓값
-		return (int) (price * StaticValue.percent[type] / 100) * 100; // /100 * 100 이유 : 롯데월드 할인가 최소단위는 100원이기 때문
+		return (int) (price * StaticValue.getPercent()[type] / 100) * 100; // /100 * 100 이유 : 롯데월드 할인가 최소단위는 100원이기 때문
 	}
 
 	protected int ticketSum(int price, int type, int count, int saleprice) { // 티켓값 총 합
 		int sum = 0;
 
-		if (type == StaticValue.NONE) sum = price * count; // 할인 미적용
-		else if ((type != StaticValue.PREGNANT || type != StaticValue.MULTICHILD) && count > StaticValue.NONE) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
+		if (type == StaticValue.getNone()) sum = price * count; // 할인 미적용
+		else if ((type != StaticValue.getPregnant() || type != StaticValue.getMultichild()) && count > StaticValue.getNone()) { // 임산부 & 다둥이는 본인만 그 외는 동반 1인 할인
 			sum = saleprice * 2 + price * (count - 2); // 동반적용 우대할인
 		} else sum = saleprice + price * (count - 1); // 우대할인
 
@@ -94,7 +94,7 @@ public class CalTickets { // calculate all
 			save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
 			totalSum += orderitem.getSum(); // 누적총합
 			int check = pui.printReapeat(orderitem.getSum()); // 추가발권질문
-			if (check == StaticValue.END) break; // 반복문 out
+			if (check == StaticValue.getEnd()) break; // 반복문 out
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
 		save.inputFile(); // 해당 파일에 입력

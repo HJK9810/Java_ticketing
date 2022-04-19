@@ -22,32 +22,32 @@ public class PrintUI { // for print
 		System.out.println("===========================롯데월드===========================");
 		for (OrderData item : Ticketing.orderList) { // forEach구문 사용
 			// 종합 or 파크이용권
-			if (item.getTicketType() == StaticValue.ALL_TICKET) str.append(String.format("%10s", "종합이용권"));
-			else if (item.getTicketType() == StaticValue.PARK_TICKET) str.append(String.format("%10s", "파크이용권"));
+			if (item.getTicketType() == StaticValue.getAllTicket()) str.append(String.format("%10s", "종합이용권"));
+			else if (item.getTicketType() == StaticValue.getParkTicket()) str.append(String.format("%10s", "파크이용권"));
 			// 종일권 or 오후권
-			if (item.getTicketDay() == StaticValue.ALL_DAY) str.append(String.format("%6s", "1DAY"));
-			else if (item.getTicketDay() == StaticValue.AFTER4) str.append(String.format("%6s", "After4"));
+			if (item.getTicketDay() == StaticValue.getAllDay()) str.append(String.format("%6s", "1DAY"));
+			else if (item.getTicketDay() == StaticValue.getAfter4()) str.append(String.format("%6s", "After4"));
 			// 연령
-			if (item.getAge() == StaticValue.OLD) { // 노인
+			if (item.getAge() == StaticValue.getOld()) { // 노인
 				str.append(String.format("%6s", "노인"));
-			} else if (item.getAge() == StaticValue.ADULT) { // 어른
+			} else if (item.getAge() == StaticValue.getAdult()) { // 어른
 				str.append(String.format("%6s", "어른"));
-			} else if (item.getAge() == StaticValue.TEEN) { // 청소년
+			} else if (item.getAge() == StaticValue.getTeen()) { // 청소년
 				str.append(String.format("%6s", "청소년"));
-			} else if (item.getAge() == StaticValue.CHILD) { // 어린이
+			} else if (item.getAge() == StaticValue.getChild()) { // 어린이
 				str.append(String.format("%6s", "어린이"));
 			} else // 유아 - 베이비
 				str.append(String.format("%6s", "베이비"));
 			// 티켓수, 티켓가격(할인적용)
 			str.append(String.format("X%-6d %-10d    ", item.getOrderCount(), item.getPrice()));
 			// 우대권 종류
-			if (item.getAdventageType() == StaticValue.NONE) str.append("*우대적용 없음");
+			if (item.getAdventageType() == StaticValue.getNone()) str.append("*우대적용 없음");
 			else {
-				if (item.getAdventageType() == StaticValue.DISABLE) str.append("*장애인 ");
-				else if (item.getAdventageType() == StaticValue.MERIT) str.append("*국가유공자 ");
-				else if (item.getAdventageType() == StaticValue.VACSOLD) str.append("*휴가장병 ");
-				else if (item.getAdventageType() == StaticValue.PREGNANT) str.append("*임산부 ");
-				else if (item.getAdventageType() == StaticValue.MULTICHILD) str.append("*다둥이 ");
+				if (item.getAdventageType() == StaticValue.getDisable()) str.append("*장애인 ");
+				else if (item.getAdventageType() == StaticValue.getMerit()) str.append("*국가유공자 ");
+				else if (item.getAdventageType() == StaticValue.getVacsold()) str.append("*휴가장병 ");
+				else if (item.getAdventageType() == StaticValue.getPregnant()) str.append("*임산부 ");
+				else if (item.getAdventageType() == StaticValue.getMultichild()) str.append("*다둥이 ");
 
 				str.append("우대적용");
 			}
