@@ -52,6 +52,7 @@ public class PrintUI { // for print
 				str.append("우대적용\n");
 			}
 			System.out.println(str);
+			str.setLength(0); // stringbuilder 초기화
 		}
 
 		System.out.println("\t입장료 총액은 " + sum + "원 입니다.");
