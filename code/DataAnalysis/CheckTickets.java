@@ -9,17 +9,17 @@ public class CheckTickets {
 	protected static int[] perAdvant = new int[7];
 	
 	protected void TicketsAnalysis() {
-		int day = Analysis.orderList.get(0)[0];
+		int day = Analysis.orderList.get(0)[0]; // 입력된 첫날
 		int sum = 0;
 		
 		for(int[] items : Analysis.orderList) {
-			if(day != items[0]) {
+			if(day != items[0]) { // 날짜별 총 매출액
 				pricePerDate.add(day+"-"+sum);
 				
-				day = items[0];
+				day = items[0]; // 날짜
 				sum = items[5]; // 가격
 			} else sum += items[5];
-			
+			// 이용권 & 연령대별 티켓수, 이용권별 총 매출수
 			int idx = -1;
 			if (items[1] == 1) idx = items[2] - 1;
 			else if (items[1] == 2) idx = items[2] + 1;
@@ -27,7 +27,7 @@ public class CheckTickets {
 			ticketType[idx][items[3]]++;
 			ticketType[idx][0]++;
 			ticketType[idx][6] += items[5];
-			
+			// 우대사항 별 티켓수
 			perAdvant[items[6]] = items[4]; // items[4] : 티켓수량, items[6] : 우대사항
 			perAdvant[0]++; // countSum[0] : 총 매수
 		}
