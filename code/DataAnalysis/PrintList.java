@@ -1,5 +1,7 @@
 package DataAnalysis;
 
+import java.util.ArrayList;
+
 public class PrintList {
 	protected void PrintCSV() {
 		String[] ary = Analysis.category;
@@ -24,8 +26,7 @@ public class PrintList {
 	}
 	
 	protected void PrintTicketType() {
-		CheckTickets check = new CheckTickets();
-		int[][] tickets = check.CalType();
+		int[][] tickets = CheckTickets.ticketType;
 		System.out.println("======================= 권종 별 판매현황 =======================");
 		for(int idx = 0; idx < tickets.length; idx++) {
 			int checkType = idx % 2 + 1;
@@ -50,8 +51,7 @@ public class PrintList {
 	}
 	
 	protected void PrintDaysSum() {
-		CheckTickets check = new CheckTickets();
-		String[] perDates = check.CalPerDay();
+		ArrayList<String> perDates = CheckTickets.pricePerDate;
 		System.out.println("============= 일자별 매출 현황 =============");
 		for(String line : perDates) {
 			String[] ary = line.split("-");
@@ -63,8 +63,7 @@ public class PrintList {
 	}
 	
 	protected void PrintSaleType() {
-		CheckTickets check = new CheckTickets();
-		int[] tickets = check.CheckAdvantType();
+		int[] tickets = CheckTickets.perAdvant;
 		System.out.println("====== 우대권 판매 현황 ======");
 		for(int idx = 0; idx < tickets.length; idx++) {
 			if(idx == 0) System.out.printf("%s\t:%6d매\n", "총 판매 티켓수", tickets[0]);

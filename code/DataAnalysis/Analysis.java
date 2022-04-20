@@ -8,9 +8,11 @@ public class Analysis {
 	
 	public static void main(String[] args) {
 		ReadFile rf = new ReadFile();
+		CheckTickets check = new CheckTickets();
 		PrintList printl = new PrintList();
 		
 		rf.ReadCSV();
+		check.TicketsAnalysis();
 		printl.PrintCSV();
 		printl.PrintTicketType();
 		printl.PrintDaysSum();
