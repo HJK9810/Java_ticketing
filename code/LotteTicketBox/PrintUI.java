@@ -20,7 +20,7 @@ public class PrintUI { // for print
 		StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("===========================롯데월드===========================");
-		for (OrderData item : Ticketing.orderList) { // forEach구문 사용
+		for (OrderData item : SaveVals.orderList) { // forEach구문 사용
 			// 종합 or 파크이용권
 			if (item.getTicketType() == StaticValue.getAllTicket()) str.append(String.format("%10s", "종합이용권"));
 			else if (item.getTicketType() == StaticValue.getParkTicket()) str.append(String.format("%10s", "파크이용권"));

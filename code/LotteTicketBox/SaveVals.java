@@ -3,12 +3,14 @@ package LotteTicketBox;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SaveVals { // save & make csv files
+	protected static ArrayList<OrderData> orderList = new ArrayList<>(); // 티켓발권용 배열
 	
 	protected void saveOrder(OrderData orderItem) {
-		Ticketing.orderList.add(orderItem); // arraylist에 해당 값들 input
+		orderList.add(orderItem); // arraylist에 해당 값들 input
 	}
 
 	protected void inputFile() { // 파일에 입력한 값들 이어쓰기
@@ -18,7 +20,7 @@ public class SaveVals { // save & make csv files
 		try {
 			FileWriter fw = new FileWriter("C:\\javatest\\ticketing\\report.csv", true);
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
-			for (OrderData item : Ticketing.orderList) { // forEach 사용
+			for (OrderData item : orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
 				// 이용권
 				if (item.getTicketType() == StaticValue.getAllTicket()) str.append(String.format("%-7s,", "종합이용권"));
