@@ -13,7 +13,7 @@ public class ReadFile {
             String line = br.readLine();
             Analysis.category = line.split(",");
             while ((line = br.readLine()) != null) {
-            	Analysis.orderList.add(set.SetFileArgus(line.split(",")));
+            	Analysis.orderList.add(set.SetFileArgus(line.replace(" ", "").split(","))); // 공백제거후, 분리
             }
         } catch (IOException e) {
             e.printStackTrace();
