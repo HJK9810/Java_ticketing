@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class CheckTickets {
 	protected int[][] CalType() {
 		int[][] tickets = new int[4][7]; // 종합-1day, 종합-after4, 파크-1day, 파크-after4
+		// 0 = 총 매수, 1~6 = 해당 인덱스 번호와 일치하는 연령대, 7 = 총금액
 		for(int[] items : Analysis.orderList) {
 			int idx = -1;
 			if (items[1] == 1) idx = items[2] - 1;
@@ -27,7 +28,7 @@ public class CheckTickets {
 				perDay.add(day+"-"+sum);
 				
 				day = items[0];
-				sum = items[5];
+				sum = items[5]; // 가격
 			} else sum += items[5];
 		}
 		perDay.add(day+"-"+sum); // 마지막 데이터가 출력되지 않기 때문
