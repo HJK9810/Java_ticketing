@@ -29,7 +29,7 @@ public class TicketSys {
 				save.saveOrder(orderitem); // 해당 데이터, arraylist에 저장
 				totalSum += orderitem.getSum(); // 누적총합
 				int check = pui.printReapeat(orderitem.getSum()); // 추가발권질문
-				if (check == StaticValue.getEnd()) break; // 반복문 out
+				if (check == StaticValue.END) break; // 반복문 out
 				orderitem = new OrderData(); // 초기화
 			}
 			pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
