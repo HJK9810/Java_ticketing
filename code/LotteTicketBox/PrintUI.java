@@ -25,8 +25,8 @@ public class PrintUI { // for print
 			if (item.getTicketType() == StaticValue.getAllTicket()) str.append(String.format("%10s", "종합이용권"));
 			else if (item.getTicketType() == StaticValue.getParkTicket()) str.append(String.format("%10s", "파크이용권"));
 			// 종일권 or 오후권
-			if (item.getTicketDay() == StaticValue.getAllDay()) str.append(String.format("%6s", "1DAY"));
-			else if (item.getTicketDay() == StaticValue.getAfter4()) str.append(String.format("%6s", "After4"));
+			if (item.getTicketDay() == StaticValue.getAllDay()) str.append(String.format("%8s", "1DAY"));
+			else if (item.getTicketDay() == StaticValue.getAfter4()) str.append(String.format("%8s", "After4"));
 			// 연령
 			if (item.getAge() == StaticValue.getOld()) { // 노인
 				str.append(String.format("%6s", "노인"));

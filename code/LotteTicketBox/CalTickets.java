@@ -75,12 +75,10 @@ public class CalTickets { // calculate all
 		PrintUI pui = new PrintUI(); // ui 출력용
 		CalTickets calc = new CalTickets(); // 계산용
 		SaveVals save = new SaveVals(); // 데이터 저장 & 파일 저장용
-		OrderData orderitem; // 정의
+		OrderData orderitem = new OrderData(); // 정의
 
 		int totalSum = 0; // '한번에' 발급한 전체 티켓값 총합
 		while (true) {
-			orderitem = new OrderData(); // 새로 생성
-			
 			orderitem.setTicketType(pui.ticketTypeAll()); // 종합 or 파크
 			orderitem.setTicketDay(pui.ticketTypeDay()); // 종일 or 오후
 			orderitem.setIDNumber(input.inputResidentNum()); // 주민번호 앞자리
@@ -95,6 +93,7 @@ public class CalTickets { // calculate all
 			totalSum += orderitem.getSum(); // 누적총합
 			int check = pui.printReapeat(orderitem.getSum()); // 추가발권질문
 			if (check == StaticValue.getEnd()) break; // 반복문 out
+			orderitem = new OrderData(); // 초기화
 		}
 		pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
 		save.inputFile(); // 해당 파일에 입력
