@@ -24,8 +24,29 @@ public class PrintList {
 	}
 	
 	protected void PrintTicketType() {
-		System.out.println("================= 권종 별 판매현황 =================");
-		System.out.println("------------------------------------------------\n");
+		CheckTickets check = new CheckTickets();
+		int[][] tickets = check.CalType();
+		System.out.println("======================= 권종 별 판매현황 =======================");
+		for(int idx = 0; idx < tickets.length; idx++) {
+			int checkType = idx % 2 + 1;
+			int lastIdx = tickets[idx].length - 1;
+			if(checkType == 1) System.out.printf("%s 총 %d매\n", StaticValue.TICKET_TYPE[idx / 2 + 1], tickets[idx][0] + tickets[idx + 1][0]);
+			
+			for(int jdx = 0; jdx < lastIdx; jdx++) {
+				if(jdx == 0) {
+					System.out.printf("\t%s 총 %d매\n", StaticValue.TICKET_TIME[checkType], tickets[idx][0]);
+					continue;
+				} else if(jdx == 1) System.out.print("\t\t");
+				
+				System.out.printf("%s %d매", StaticValue.AGE[jdx], tickets[idx][jdx]);
+				if(jdx == lastIdx - 1) System.out.println();
+				else System.out.print(", ");
+			}
+			System.out.printf(" => %s 총매출 %d원\n\n", StaticValue.TICKET_TIME[checkType], tickets[idx][lastIdx]);
+			
+			if(checkType == 2) System.out.printf(" ==>> %s 총 매출 %d원\n\n", StaticValue.TICKET_TYPE[idx / 2 + 1], tickets[idx - 1][lastIdx] + tickets[idx][lastIdx]);
+		}
+		System.out.println("------------------------------------------------------------\n");
 	}
 	
 	protected void PrintDaysSum() {

@@ -12,6 +12,7 @@ public class Analysis {
 		
 		rf.ReadCSV();
 		printl.PrintCSV();
+		printl.PrintTicketType();
 		printl.PrintDaysSum();
 		printl.PrintSaleType();
 	}
