@@ -70,15 +70,4 @@ public class InputData { // for inputs
 
 		return input;
 	}
-	
-	protected void ticketingSystem() { // main 에서 돌아갈 메인 시스템 함수
-		CalTickets calc = new CalTickets(); // 주 반복함수가 들어있는 class 선언
-
-		int isExit = 0; // 프로그램 종료를 위한 확인변수
-
-		do { // main 간략화
-			isExit = calc.repeatFunc(); // 반복용 while 함수분리
-			SaveVals.orderList = new ArrayList<>(); // 해당 배열 초기화
-		} while (isExit == 1); // if isExit == 2 => program end
-	}
 }
