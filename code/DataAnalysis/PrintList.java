@@ -28,9 +28,17 @@ public class PrintList {
 		System.out.println("------------------------------------------------\n");
 	}
 	
-	protected void PrintDayssum() {
-		System.out.println("================= 일자별 매출 현황 =================");
-		System.out.println("------------------------------------------------\n");
+	protected void PrintDaysSum() {
+		CheckTickets check = new CheckTickets();
+		String[] perDates = check.CalPerDay();
+		System.out.println("============= 일자별 매출 현황 =============");
+		for(String line : perDates) {
+			String[] ary = line.split("-");
+			System.out.printf("%s년 %s월 %s일 : ", ary[0].substring(0, 4), ary[0].substring(4, 6), ary[0].substring(6));
+			System.out.printf("총 매출 %14s원\n", ary[1]);
+		}
+		
+		System.out.println("----------------------------------------\n");
 	}
 	
 	protected void PrintSaleType() {
