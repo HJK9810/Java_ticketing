@@ -22,4 +22,25 @@ public class PrintList {
 		}
 		System.out.println("----------------------------------------------\n");
 	}
+	
+	protected void PrintTicketType() {
+		System.out.println("================= 권종 별 판매현황 =================");
+		System.out.println("------------------------------------------------\n");
+	}
+	
+	protected void PrintDayssum() {
+		System.out.println("================= 일자별 매출 현황 =================");
+		System.out.println("------------------------------------------------\n");
+	}
+	
+	protected void PrintSaleType() {
+		CheckTickets check = new CheckTickets();
+		int[] tickets = check.CheckAdvantType();
+		System.out.println("====== 우대권 판매 현황 ======");
+		for(int idx = 0; idx < tickets.length; idx++) {
+			if(idx == 0) System.out.printf("%s\t:%6d매\n", "총 판매 티켓수", tickets[0]);
+			else System.out.printf("%s\t\t:%6d매\n", StaticValue.SALE_ADVANTAGE[idx], tickets[idx]);
+		}
+		System.out.println("--------------------------\n");
+	}
 }

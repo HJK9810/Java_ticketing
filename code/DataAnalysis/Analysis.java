@@ -12,5 +12,6 @@ public class Analysis {
 		
 		rf.ReadCSV();
 		printl.PrintCSV();
+		printl.PrintSaleType();
 	}
 }

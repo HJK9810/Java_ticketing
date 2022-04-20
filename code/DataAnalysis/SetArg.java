@@ -1,33 +1,28 @@
 package DataAnalysis;
 
+import java.util.Arrays;
+
 public class SetArg {
 	protected int[] SetFileArgus(String[] ary) {
 		int[] list = new int[7];
 		
-		list[0] = Integer.parseInt(ary[0]);
-		list[4] = Integer.parseInt(ary[4]);
-		list[5] = Integer.parseInt(ary[5]);
-		
-		if(ary[1].contains("종합")) list[1] = 1;
-		else if(ary[1].contains("파크")) list[1] = 2;
-		
-		if(ary[2].trim().equals("1DAY")) list[2] = 1;
-		else if(ary[2].trim().equals("After4")) list[2] = 2;
-		
+		list[0] = Integer.parseInt(ary[0]); // 날짜
+		list[4] = Integer.parseInt(ary[4]); // 수량
+		list[5] = Integer.parseInt(ary[5]); // 가격
+		// 이용권
+		String ticket = ary[1].trim();
+		list[1] = Arrays.asList(StaticValue.TICKET_TYPE).indexOf(ticket);
+		// 권종
+		String time = ary[2].trim();
+		list[2] = Arrays.asList(StaticValue.TICKET_TIME).indexOf(time);
+		// 연령
 		String age = ary[3].trim();
-		if(age.equals("노인")) list[3] = 5;
-		else if(age.equals("어른")) list[3] = 4;
-		else if(age.equals("청소년")) list[3] = 3;
-		else if(age.equals("어린이")) list[3] = 2;
-		else list[3] = 1;
-		
+		list[3] = Arrays.asList(StaticValue.AGE).indexOf(age);
+		if(list[3] == -1) list[3] = StaticValue.BABY;
+		// 우대사항
 		String type = ary[6].trim();
-		if(type.equals("다둥이")) list[6] = 6;
-		else if(type.equals("임산부")) list[6] = 5;
-		else if(type.equals("휴가장병")) list[6] = 4;
-		else if(type.equals("국가유공자")) list[6] = 3;
-		else if(type.equals("장애인")) list[6] = 2;
-		else list[6] = 1;
+		list[6] = Arrays.asList(StaticValue.SALE_ADVANTAGE).indexOf(type);
+		if(list[6] == -1) list[6] = StaticValue.NONE;
 		
 		return list;
 	}
