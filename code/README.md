@@ -11,7 +11,7 @@
 ### [DataAnalysis](https://github.com/HJK9810/Java_ticketing/tree/main/code/DataAnalysis) : 티켓팅 데이터 분석 
 * Analysis.java : main  
 * ReadFile.java : csv 파일 읽기  
-* SetArg.java : csv파일속 데이터 숫자로 치환  
+* PrintFile.java : csv 파일 쓰기 
 * PrintList.java : 출력  
 * CheckTickets.java : 파일 분석  
 * StaticValue.java : 모든 상수 저장 클래스  
