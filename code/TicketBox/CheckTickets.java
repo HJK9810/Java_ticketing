@@ -24,8 +24,8 @@ public class CheckTickets {
 			if (items[1] == 1) idx = items[2] - 1;
 			else if (items[1] == 2) idx = items[2] + 1;
 			
-			ticketType[idx][items[3]]++;
-			ticketType[idx][0]++;
+			ticketType[idx][items[3]] += items[4];
+			ticketType[idx][0] += items[4];
 			ticketType[idx][6] += items[5];
 			// 우대사항 별 티켓수
 			perAdvant[items[6]] += items[4]; // items[4] : 티켓수량, items[6] : 우대사항
