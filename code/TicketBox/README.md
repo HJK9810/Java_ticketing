@@ -5,8 +5,7 @@
 
 ### 출력 결과  
 #### 티켓팅 실행   
-![image](https://user-images.githubusercontent.com/50227588/164374448-3c86282c-ad2d-4071-a62c-6150375bc2af.png)    
-![image](https://user-images.githubusercontent.com/50227588/164374765-fd61aa18-b3b4-4e7d-a55a-ec96c4b29b1b.png)   
+![image](https://user-images.githubusercontent.com/50227588/164381334-a8535083-1544-464a-9d1e-67a3e5bc702c.png)   
 #### 분석 출력결과   
 ![image](https://user-images.githubusercontent.com/50227588/164374635-13366c72-7cf0-4e3f-b8bc-c25ca6356a42.png)   
 ![image](https://user-images.githubusercontent.com/50227588/164374682-fe8f44b1-32db-4049-9b20-4044b308298b.png)
