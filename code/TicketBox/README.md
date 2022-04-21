@@ -14,5 +14,3 @@
 
 
 #### 분석 저장된 파일 : [ticketing](https://github.com/HJK9810/Java_ticketing/tree/main/ticketing)  
-* report.csv
-![image](https://github.com/HJK9810/Java_ticketing/blob/main/ticketing/report.csv)
