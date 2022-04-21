@@ -32,7 +32,7 @@ public class SystemFunc {
 		} while (pui.inputEnd() == StaticValue.CONTINUE); // if isExit == 2 => program end
 	}
 	
-	protected void AnalySys() {
+	protected void AnalySys() { // 분석용 메인함수
 		ReadFile rf = new ReadFile();
 		PrintUI pui = new PrintUI();
 		

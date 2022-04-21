@@ -28,8 +28,8 @@ public class CheckTickets {
 			ticketType[idx][0]++;
 			ticketType[idx][6] += items[5];
 			// 우대사항 별 티켓수
-			perAdvant[items[6]] = items[4]; // items[4] : 티켓수량, items[6] : 우대사항
-			perAdvant[0]++; // countSum[0] : 총 매수
+			perAdvant[items[6]] += items[4]; // items[4] : 티켓수량, items[6] : 우대사항
+			perAdvant[0] += items[4]; // countSum[0] : 총 매수
 		}
 		pricePerDate.add(day+"-"+sum); // 마지막 데이터가 출력되지 않기 때문
 	}

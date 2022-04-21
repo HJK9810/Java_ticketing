@@ -61,7 +61,7 @@ public class SaveVals { // save & make csv files
 		}
 	}
 	
-	protected void PerDate() {
+	protected void PerDate() { // 일자별 매출 분석 파일 출력
 		try {
 			FileWriter fw = new FileWriter(StaticValue.PATH + "perDate.csv", false); // 경로지정, 덮어쓰기 허용
 			StringBuilder str = new StringBuilder();
@@ -80,7 +80,7 @@ public class SaveVals { // save & make csv files
 		}
 	}
 	
-	protected void PerType() {
+	protected void PerType() { // 권종별 판매 분석 파일출력
 		try {
 			FileWriter fw = new FileWriter(StaticValue.PATH + "perType.csv", false);
 			StringBuilder str = new StringBuilder();
@@ -116,7 +116,7 @@ public class SaveVals { // save & make csv files
 		}
 	}
 	
-	protected void PerAdvate() {
+	protected void PerAdvate() { // 우대권 판매별 분석 파일 출력
 		try {
 			FileWriter fw = new FileWriter(StaticValue.PATH + "perAdvant.csv", false);
 			StringBuilder str = new StringBuilder();

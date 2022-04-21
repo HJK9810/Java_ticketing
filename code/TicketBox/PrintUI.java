@@ -37,7 +37,9 @@ public class PrintUI { // for print
 	protected void printTickets(int sum) { // 발권 종료후, 발권한 모든 티켓들 출력
 		StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 		System.out.println("  티켓 발권을 종료합니다. 감사합니다.\n");
-		System.out.println("===========================롯데월드===========================");
+		System.out.println("=============================롯데월드=============================");
+		System.out.printf("|%9s %6s%6s  %-4s %-14s%-12s|\n", "이용권", "이용시간", "나이", "티켓수", "가격", "우대사항");
+		System.out.println("================================================================");
 		for (OrderData item : SaveVals.orderList) { // forEach구문 사용
 			// 종합 or 파크이용권
 			if (item.getTicketType() == StaticValue.ALL_TICKET) str.append(String.format("%10s", "종합이용권"));
@@ -57,7 +59,7 @@ public class PrintUI { // for print
 			} else // 유아 - 베이비
 				str.append(String.format("%6s", "베이비"));
 			// 티켓수, 티켓가격(할인적용)
-			str.append(String.format("X%-6d %-10d    ", item.getOrderCount(), item.getPrice()));
+			str.append(String.format(" X %-4d %-10s    ", item.getOrderCount(), df.format(item.getPrice())));
 			// 우대권 종류
 			if (item.getAdventageType() == StaticValue.NONE) str.append("*우대적용 없음");
 			else {
@@ -73,23 +75,24 @@ public class PrintUI { // for print
 			str.setLength(0); // stringbuilder 초기화
 		}
 
-		System.out.println("\n\t입장료 총액은 " + sum + "원 입니다."); // sum = totalSum
+		System.out.println("  |");
+		System.out.println("  |---> 입장료 총액은 " + df.format(sum) + "원 입니다."); // sum = totalSum
 		System.out.println(" ** 임산부와 다둥이행복카드를 제외한 우대사항은 동반 1인까지 우대가 적용됩니다.");
-		System.out.println("==============================================================\n");
+		System.out.println("================================================================\n");
 	}
 
 	protected int printReapeat(int sum) { // 발권 지속여부
-		System.out.println("  가격은 " + sum + " 원 입니다."); // 해당 티켓 총 합 = 티켓발권수 * 가격
-		System.out.println("  감사합니다.\n");
+		System.out.println(" |- 가격은 " + df.format(sum) + " 원 입니다."); // 해당 티켓 총 합 = 티켓발권수 * 가격
+		System.out.println(" |- 감사합니다.\n");
 
-		System.out.println("  계속 발권 하시겠습니까?"); // 추가 발권여부 질문
+		System.out.println(" |-> 계속 발권 하시겠습니까?"); // 추가 발권여부 질문
 		System.out.println("\t1. 티켓발권\n\t2. 종료");
 
 		return idata.checkTwoChoice();
 	}
 
 	protected int inputEnd() { // 프로그램 진행 or 새 주문
-		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : "); // 해당 프로그램 종료여부
+		System.out.println(" |-> 계속 진행(1: 새로운 주문, 2: 프로그램 종료) : "); // 해당 프로그램 종료여부
 		return idata.checkEnd();
 	}
 	
