@@ -10,7 +10,7 @@ public class Analysis {
 		ReadFile rf = new ReadFile();
 		PrintList printl = new PrintList();
 		
-		rf.ReadCSV();
-		printl.PrintAll();
+		rf.ReadCSV(); // 파일 읽기
+		printl.PrintAll(); // 콘솔에 출력
 	}
 }

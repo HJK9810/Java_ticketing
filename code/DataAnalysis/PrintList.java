@@ -8,13 +8,13 @@ public class PrintList {
 		PrintList print = new PrintList();
 		PrintFile pf = new PrintFile();
 		
-		check.TicketsAnalysis();
-		print.PrintCSV();
-		print.PrintTicketType();
-		print.PrintDaysSum();
-		print.PrintSaleType();
+		check.TicketsAnalysis(); // 데이터 분류 & 분석
+		print.PrintCSV(); // csv 파일 전체 출력
+		print.PrintTicketType(); // 권종별 판매현황 출력
+		print.PrintDaysSum(); // 일자별 매출 현황 출력
+		print.PrintSaleType(); // 우대권 판매현황 출력
 		
-		pf.PrintCSV();
+		pf.PrintCSV(); // 모든 데이터 개별 파일에 저장
 	}
 	
 	protected void PrintCSV() {
