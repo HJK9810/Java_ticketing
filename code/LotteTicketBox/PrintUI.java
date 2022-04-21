@@ -1,18 +1,17 @@
 package LotteTicketBox;
 
 public class PrintUI { // for print
+	InputData idata = new InputData();
 
 	protected int ticketTypeAll() { // 종합이용권 or 파크이용권 선택
 		System.out.println("  권종을 선택하세요.");
-		System.out.println("\t1. 종합이용권\n\t2. 파크이용권");
-		InputData idata = new InputData(); 
+		System.out.println("\t1. 종합이용권\n\t2. 파크이용권"); 
 		return idata.checkTwoChoice(); // 숫자 입력받고 유효 확인
 	}
 
 	protected int ticketTypeDay() { // 종일권 or 오후권 선택
 		System.out.println("  권종을 선택하세요.");
 		System.out.println("\t1. 1DAY\n\t2. After4(오후 4시 이후 입장)");
-		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
 
@@ -67,13 +66,11 @@ public class PrintUI { // for print
 		System.out.println("  계속 발권 하시겠습니까?"); // 추가 발권여부 질문
 		System.out.println("\t1. 티켓발권\n\t2. 종료");
 
-		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
 
 	protected int inputEnd() { // 프로그램 진행 or 새 주문
 		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : "); // 해당 프로그램 종료여부
-		InputData idata = new InputData();
 		return idata.checkTwoChoice();
 	}
 }
