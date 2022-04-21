@@ -4,12 +4,17 @@ import java.util.ArrayList;
 
 public class PrintList {
 	protected void PrintAll() {
+		CheckTickets check = new CheckTickets();
 		PrintList print = new PrintList();
+		PrintFile pf = new PrintFile();
 		
+		check.TicketsAnalysis();
 		print.PrintCSV();
 		print.PrintTicketType();
 		print.PrintDaysSum();
 		print.PrintSaleType();
+		
+		pf.PrintCSV();
 	}
 	
 	protected void PrintCSV() {
