@@ -19,6 +19,7 @@ public class PrintUI { // for print
 		pui.PrintSaleType(); // 우대권 판매현황 출력
 		
 		save.InputCSVs(); // 모든 데이터 개별 파일에 저장
+		pui.inputEnd();
 	}
 
 	protected int ticketTypeAll() { // 종합이용권 or 파크이용권 선택
@@ -89,7 +90,7 @@ public class PrintUI { // for print
 
 	protected int inputEnd() { // 프로그램 진행 or 새 주문
 		System.out.println("  계속 진행(1: 새로운 주문, 2: 프로그램 종료) : "); // 해당 프로그램 종료여부
-		return idata.checkTwoChoice();
+		return idata.checkEnd();
 	}
 	
 	protected void PrintCSV() {

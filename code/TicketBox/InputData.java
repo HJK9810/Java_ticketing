@@ -26,6 +26,20 @@ public class InputData { // for inputs
 		} while (input != 1 && input != 2); // 1이나 2가 아닐경우 반복
 		return input;
 	}
+	
+	protected int checkEnd() {
+		SystemFunc sys = new SystemFunc();
+		int input;
+		do {
+			System.out.print("\t\t => ");
+			input = scanner.nextInt();
+			if(input == 0) { // 분석프로그램으로 넘어가는 번호 0
+				sys.AnalySys(); // 분석프로그램 open
+				break; // 재반복 방지
+			}
+		} while (input != 1 && input != 2); // 1이나 2가 아닐경우 반복
+		return input;
+	}
 
 	protected String inputResidentNum() { // 연령입력
 		String input;
