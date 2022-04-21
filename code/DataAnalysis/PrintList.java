@@ -1,8 +1,10 @@
 package DataAnalysis;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class PrintList {
+	DecimalFormat df = new DecimalFormat("###,###,###"); // 가격용 , 구분
 	protected void PrintAll() {
 		CheckTickets check = new CheckTickets();
 		PrintList print = new PrintList();
@@ -30,7 +32,7 @@ public class PrintList {
 			str.append(String.format("%4d", line[2]));
 			str.append(String.format("%6d", line[3]));
 			str.append(String.format("%6d", line[4]));
-			str.append(String.format("%9d", line[5]));
+			str.append(String.format("%9s", df.format(line[5])));
 			str.append(String.format("%6d", line[6]));
 			System.out.println(str);
 			
@@ -57,9 +59,9 @@ public class PrintList {
 				if(jdx == lastIdx - 1) System.out.println();
 				else System.out.print(", ");
 			}
-			System.out.printf(" => %s 총매출 %d원\n\n", StaticValue.TICKET_TIME[checkType], tickets[idx][lastIdx]);
+			System.out.printf(" => %s 총매출 %s원\n\n", StaticValue.TICKET_TIME[checkType], df.format(tickets[idx][lastIdx]));
 			
-			if(checkType == 2) System.out.printf(" ==>> %s 총 매출 %d원\n\n", StaticValue.TICKET_TYPE[idx / 2 + 1], tickets[idx - 1][lastIdx] + tickets[idx][lastIdx]);
+			if(checkType == 2) System.out.printf(" ==>> %s 총 매출 %s원\n\n", StaticValue.TICKET_TYPE[idx / 2 + 1], df.format(tickets[idx - 1][lastIdx] + tickets[idx][lastIdx]));
 		}
 		System.out.println("------------------------------------------------------------\n");
 	}
@@ -70,7 +72,7 @@ public class PrintList {
 		for(String line : perDates) {
 			String[] ary = line.split("-");
 			System.out.printf("%s년 %s월 %s일 : ", ary[0].substring(0, 4), ary[0].substring(4, 6), ary[0].substring(6));
-			System.out.printf("총 매출 %14s원\n", ary[1]);
+			System.out.printf("총 매출 %14s원\n", df.format(Integer.parseInt(ary[1])));
 		}
 		
 		System.out.println("----------------------------------------\n");
