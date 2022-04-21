@@ -3,6 +3,15 @@ package DataAnalysis;
 import java.util.ArrayList;
 
 public class PrintList {
+	protected void PrintAll() {
+		PrintList print = new PrintList();
+		
+		print.PrintCSV();
+		print.PrintTicketType();
+		print.PrintDaysSum();
+		print.PrintSaleType();
+	}
+	
 	protected void PrintCSV() {
 		String[] ary = Analysis.category;
 		

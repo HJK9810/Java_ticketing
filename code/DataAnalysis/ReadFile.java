@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class ReadFile {
-	protected static String path = "C:\\javatest\\ticketing\\";
 	protected void ReadCSV() {
 		try {
-            BufferedReader br = new BufferedReader(new FileReader(path + "report.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(StaticValue.PATH + "report.csv"));
             String line = br.readLine(); // 첫줄은 모두 문자열인 카테고리이기에
             Analysis.category = line.split(",");
             while ((line = br.readLine()) != null) {

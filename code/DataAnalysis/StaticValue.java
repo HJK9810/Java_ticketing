@@ -1,6 +1,8 @@
 package DataAnalysis;
 
 public final class StaticValue {
+	// 파일 경로
+	protected static final String PATH = "C:\\javatest\\ticketing\\";
 	// 티켓종류
 	protected static final int ALL_TICKET = 1, PARK_TICKET = 2, ALL_DAY = 1, AFTER4 = 2;
 	// 티켓가능수
