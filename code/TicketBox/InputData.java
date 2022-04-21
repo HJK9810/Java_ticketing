@@ -32,12 +32,10 @@ public class InputData { // for inputs
 		int input;
 		do {
 			System.out.print("\t\t => ");
-			input = scanner.nextInt();
-			if(input == 0) { // 분석프로그램으로 넘어가는 번호 0
-				sys.AnalySys(); // 분석프로그램 open
-				break; // 재반복 방지
-			}
-		} while (input != 1 && input != 2); // 1이나 2가 아닐경우 반복
+			input = scanner.nextInt(); // 1이나 2가 아닐경우 반복
+		} while (input != StaticValue.CONTINUE && input != StaticValue.END && input != StaticValue.ANALYSIS); 
+		
+		if(input == StaticValue.ANALYSIS) sys.AnalySys(); // StaticValue.ANALYSIS = 0 일 경우 분석프로그램 전환
 		return input;
 	}
 

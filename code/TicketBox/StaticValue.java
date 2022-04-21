@@ -9,7 +9,7 @@ public final class StaticValue { // 상수용
 	// 티켓가능수
 	protected static final int MIN_COUNT = 1, MAX_COUNT = 10;
 	// 지속 or not
-	protected static final int CONTINUE = 1, END = 2;
+	protected static final int CONTINUE = 1, END = 2, ANALYSIS = 0;
 	// 나이범위용 상수
 	protected static final int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19;
 	protected static final int MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;
