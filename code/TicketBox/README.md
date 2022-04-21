@@ -4,13 +4,15 @@
 > 3. 최종 종료 직전, 숫자 0을 입력할 경우 데이터 분석 결과로 이동, 분석내용 출력
 
 ### 출력 결과  
-![image](https://user-images.githubusercontent.com/50227588/164371447-3cd9f7be-1f43-403d-be29-8b7a1389d048.png)   
-![image](https://user-images.githubusercontent.com/50227588/164371507-ac5c2a42-9cfd-4c1d-ab03-52d75c49ba8f.png)   
-![image](https://user-images.githubusercontent.com/50227588/164371528-0547c038-3eb8-4a78-a55d-5cd8d8ed472e.png)   
-![image](https://user-images.githubusercontent.com/50227588/164371539-77219b9e-235c-4ff1-a963-76dbc9b9b2d9.png)
+#### 티켓팅 실행   
+![image](https://user-images.githubusercontent.com/50227588/164374448-3c86282c-ad2d-4071-a62c-6150375bc2af.png)    
+![image](https://user-images.githubusercontent.com/50227588/164374765-fd61aa18-b3b4-4e7d-a55a-ec96c4b29b1b.png)   
+#### 분석 출력결과   
+![image](https://user-images.githubusercontent.com/50227588/164374635-13366c72-7cf0-4e3f-b8bc-c25ca6356a42.png)   
+![image](https://user-images.githubusercontent.com/50227588/164374682-fe8f44b1-32db-4049-9b20-4044b308298b.png)
 
 #### 티켓 반복 선택시?  
-![image](https://user-images.githubusercontent.com/50227588/164371900-cf412903-fd45-4bca-bdaf-a8b4aab246ff.png)
+![image](https://user-images.githubusercontent.com/50227588/164374547-2c777640-8e50-4683-bd30-954df76986ce.png)   
 
 
 ### 분석 저장된 파일 : [ticketing](https://github.com/HJK9810/Java_ticketing/tree/main/ticketing)  
