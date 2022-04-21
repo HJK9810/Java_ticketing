@@ -3,15 +3,6 @@ package DataAnalysis;
 public final class StaticValue {
 	// 파일 경로
 	protected static final String PATH = "C:\\javatest\\ticketing\\";
-	// 티켓종류
-	protected static final int ALL_TICKET = 1, PARK_TICKET = 2, ALL_DAY = 1, AFTER4 = 2;
-	// 티켓가능수
-	protected static final int MIN_COUNT = 1, MAX_COUNT = 10;
-	// 지속 or not
-	protected static final int CONTINUE = 1, END = 2;
-	// 나이범위용 상수
-	protected static final int MIN_BABY = 1, MIN_CHILD = 3, MIN_TEEN = 13, MIN_ADULT = 19;
-	protected static final int MAX_CHILD = 12, MAX_TEEN = 18, MAX_ADULT = 64;
 	// 우대사항번호 - 없음, 장애, 유공자, 휴가장병, 임산부, 다둥이
 	protected static final int NONE = 1, DISABLE = 2, MERIT = 3, VACSOLD = 4, PREGNANT = 5, MULTICHILD = 6;
 	// 연령대
