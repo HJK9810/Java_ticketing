@@ -6,6 +6,17 @@ import java.util.Scanner;
 
 public class InputData { // for inputs
 	Scanner scanner = new Scanner(System.in); // 해당 클래스의 모든 함수가 사용함으로 여기에 정의
+	
+	protected void startinput(OrderData orderitem) {
+		PrintUI pui = new PrintUI();
+		InputData input = new InputData();
+		
+		orderitem.setTicketType(pui.ticketTypeAll()); // 종합 or 파크
+		orderitem.setTicketDay(pui.ticketTypeDay()); // 종일 or 오후
+		orderitem.setIDNumber(input.inputResidentNum()); // 주민번호 앞자리
+		orderitem.setOrderCount(input.ticketsCount()); // 티켓수
+		orderitem.setAdventageType(input.ticketSale(orderitem.getTicketType())); // 우대할인적용
+	}
 
 	protected int checkTwoChoice() { // 2개중 하나를 선택하는 경우
 		int input;

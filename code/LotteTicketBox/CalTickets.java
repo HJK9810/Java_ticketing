@@ -4,7 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CalTickets { // calculate all
-	protected int CalAge(String residentNum) { // calculate how old
+	protected void sysCal(OrderData orderitem) {
+		CalTickets calc = new CalTickets();
+		
+		orderitem.setAge(calc.calAge(orderitem.getIDNumber())); // 연령대계산
+		int price = calc.checkTicketPrice(orderitem); // 티켓 정가
+		orderitem.setPrice(calc.salePriceCal(price, orderitem.getAdventageType())); // 할인가 적용 티켓값
+		orderitem.setSum(calc.ticketSum(price, orderitem.getAdventageType(), orderitem.getOrderCount(), orderitem.getPrice())); // 티켓값 총합
+	}
+	
+	protected int calAge(String residentNum) { // calculate how old
 		SimpleDateFormat format = new SimpleDateFormat("YYYYMMdd");
 		Date date = new Date();
 		String today = format.format(date);
