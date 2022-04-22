@@ -37,7 +37,7 @@ public final class StaticValue { // 상수용
 	
 	private static String today;
 
-	public static String getToday() {
+	public static final String getToday() {
 		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd"); // 날짜 폼 지정
 		Date date = new Date();
 		today = dateformat.format(date); // 오늘날짜
