@@ -1,8 +1,5 @@
 package TicketBox;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class CalTickets { // calculate all
 	protected void sysCal(OrderData orderitem) {
 		CalTickets calc = new CalTickets();
@@ -14,9 +11,7 @@ public class CalTickets { // calculate all
 	}
 	
 	protected int calAge(String residentNum) { // calculate how old
-		SimpleDateFormat format = new SimpleDateFormat("YYYYMMdd");
-		Date date = new Date();
-		String today = format.format(date);
+		String today = StaticValue.getToday();
 		
 		// for calculate to change int
 		int todayYear = Integer.parseInt(today.substring(0, 4));

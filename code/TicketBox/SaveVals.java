@@ -2,9 +2,7 @@ package TicketBox;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class SaveVals { // save & make csv files
 	FileWriter fw; // 이하 메소드에서 계속 반복되기에 class에서 선언
@@ -22,9 +20,7 @@ public class SaveVals { // save & make csv files
 	}
 
 	protected void inputFile() { // 파일에 입력한 값들 이어쓰기
-		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd"); // 날짜 폼 지정
-		Date date = new Date();
-		String today = dateformat.format(date); // 오늘날짜
+		String today = StaticValue.getToday(); // 오늘날짜
 		try {
 			fw = new FileWriter(StaticValue.PATH + "report.csv", true);
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string

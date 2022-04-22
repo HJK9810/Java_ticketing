@@ -1,5 +1,8 @@
 package TicketBox;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public final class StaticValue { // 상수용
 	// 파일 경로
 	protected static final String PATH = "C:\\javatest\\ticketing\\";
@@ -31,4 +34,13 @@ public final class StaticValue { // 상수용
 	protected static final String[] TICKET_TIME = { "", "1DAY", "After4" };
 	protected static final String[] AGE = { "", "베이비", "어린이", "청소년", "어른", "노인" };
 	protected static final String[] SALE_ADVANTAGE = { "", "우대 없음", "장애인", "국가유공자", "휴가장병", "임산부", "다둥이" };
+	
+	private static String today;
+
+	public static String getToday() {
+		SimpleDateFormat dateformat = new SimpleDateFormat("YYYYMMdd"); // 날짜 폼 지정
+		Date date = new Date();
+		today = dateformat.format(date); // 오늘날짜
+		return today;
+	}
 }
