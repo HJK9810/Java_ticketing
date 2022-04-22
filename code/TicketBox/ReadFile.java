@@ -39,6 +39,7 @@ public class ReadFile {
             	
         		SystemFunc.orderList.add(list); 
             }
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
