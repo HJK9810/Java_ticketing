@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SaveVals { // save & make csv files
+	FileWriter fw; // 이하 메소드에서 계속 반복되기에 class에서 선언
 	protected static ArrayList<OrderData> orderList = new ArrayList<>(); // 티켓발권용 배열
 	
 	protected void saveOrder(OrderData orderItem) {
@@ -25,7 +26,7 @@ public class SaveVals { // save & make csv files
 		Date date = new Date();
 		String today = dateformat.format(date); // 오늘날짜
 		try {
-			FileWriter fw = new FileWriter(StaticValue.PATH + "report.csv", true);
+			fw = new FileWriter(StaticValue.PATH + "report.csv", true);
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 			for (OrderData item : orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
@@ -63,7 +64,7 @@ public class SaveVals { // save & make csv files
 	
 	protected void PerDate() { // 일자별 매출 분석 파일 출력
 		try {
-			FileWriter fw = new FileWriter(StaticValue.PATH + "perDate.csv", false); // 경로지정, 덮어쓰기 허용
+			fw = new FileWriter(StaticValue.PATH + "perDate.csv", false); // 경로지정, 덮어쓰기 허용
 			StringBuilder str = new StringBuilder();
 			for(String line : CheckTickets.pricePerDate) {
 				String[] ary = line.split("-"); // 입력된 구성 : 날짜-총판매액
@@ -82,7 +83,7 @@ public class SaveVals { // save & make csv files
 	
 	protected void PerType() { // 권종별 판매 분석 파일출력
 		try {
-			FileWriter fw = new FileWriter(StaticValue.PATH + "perType.csv", false);
+			fw = new FileWriter(StaticValue.PATH + "perType.csv", false);
 			StringBuilder str = new StringBuilder();
 			int[][] tickets = CheckTickets.ticketType;
 			
@@ -118,7 +119,7 @@ public class SaveVals { // save & make csv files
 	
 	protected void PerAdvate() { // 우대권 판매별 분석 파일 출력
 		try {
-			FileWriter fw = new FileWriter(StaticValue.PATH + "perAdvant.csv", false);
+			fw = new FileWriter(StaticValue.PATH + "perAdvant.csv", false);
 			StringBuilder str = new StringBuilder();
 			for(int idx = 0; idx < CheckTickets.perAdvant.length; idx++) {
 				if(idx == 0) str.append("총 판매 티켓수" + ", " + CheckTickets.perAdvant[0]);

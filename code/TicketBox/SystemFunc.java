@@ -3,13 +3,14 @@ package TicketBox;
 import java.util.ArrayList;
 
 public class SystemFunc {
-	protected static String[] category; 
+	PrintUI pui = new PrintUI(); // ui 출력용 - 양 메소드 모두 사용하기에 class에서 선언
+	
+	protected static String[] category; // 출력시 가장 위의 카테고리부분 - csv 읽을때 & 출력시 필요
 	protected static ArrayList<int[]> orderList = new ArrayList<>(); // 티켓발권용 배열
 	
 	protected void ticketingSystem() { // main 에서 돌아갈 메인 시스템 함수
 		// 각 class 정의 => static이 아니기에 정의 필수
 		InputData input = new InputData(); // 입력용
-		PrintUI pui = new PrintUI(); // ui 출력용
 		CalTickets calc = new CalTickets(); // 계산용
 		SaveVals save = new SaveVals(); // 데이터 저장 & 파일 저장용
 		
@@ -35,7 +36,6 @@ public class SystemFunc {
 	protected void AnalySys() { // 분석용 메인함수
 		SystemFunc sys = new SystemFunc();
 		ReadFile rf = new ReadFile();
-		PrintUI pui = new PrintUI();
 		
 		rf.ReadCSV(); // 파일 읽기
 		pui.PrintAnalysisAll(); // 콘솔에 출력
