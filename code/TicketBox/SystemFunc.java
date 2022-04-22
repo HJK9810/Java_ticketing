@@ -41,4 +41,9 @@ public class SystemFunc {
 		pui.PrintAnalysisAll(); // 콘솔에 출력
 		if(pui.inputEnd() == StaticValue.CONTINUE) sys.ticketingSystem(); // 계속 시스템을 진행하기 원하는 경우 메인시스템 돌아가기
 	}
+	
+	protected void sysEnd() {
+		System.out.println("프로그램을 강제 종료합니다.");
+		System.exit(0);
+	}
 }

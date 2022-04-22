@@ -21,10 +21,13 @@ public class InputData { // for inputs
 	}
 
 	protected int checkTwoChoice() { // 2개중 하나를 선택하는 경우
+		SystemFunc sys = new SystemFunc();
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt();
+			if(input == 33) break;
 		} while (input != 1 && input != 2); // 1이나 2가 아닐경우 반복
+		if(input == 33) sys.sysEnd();
 		return input;
 	}
 	
@@ -33,18 +36,21 @@ public class InputData { // for inputs
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt(); // 1이나 2가 아닐경우 반복
+			if(input == 33) break;
 		} while (input != StaticValue.CONTINUE && input != StaticValue.END && input != StaticValue.ANALYSIS); 
-		
+		if(input == 33) sys.sysEnd();
 		if(input == StaticValue.ANALYSIS) sys.AnalySys(); // StaticValue.ANALYSIS = 0 일 경우 분석프로그램 전환
 		return input;
 	}
 
 	protected String inputResidentNum() { // 연령입력
+		SystemFunc sys = new SystemFunc();
 		System.out.println("  주민번호를 입력하세요. (6자리까지)");
 
 		while (true) {
 			System.out.print("\t\t => ");
 			line = scanner.next(); // 년도 2자리 + 월 2자리 + 날짜 2자리
+			if(line.equals("33")) break;
 			try {
 				SimpleDateFormat  dateFormat = new  SimpleDateFormat("yyMMdd");
 				dateFormat.setLenient(false); // 포맷 확인 엄격하게
@@ -54,20 +60,25 @@ public class InputData { // for inputs
 			}
 			break; // 입력한것이 유효해 try-catch 빠져나온경우 -> while stop
 		}
+		if(line.equals("33")) sys.sysEnd();
 		return line;
 	}
 
 	protected int ticketsCount() { // 티켓 개수
+		SystemFunc sys = new SystemFunc();
 		System.out.println("  몇개를 주문하시겠습니까? (최대 10개)");
 
 		do {
 			System.out.print("\t\t => ");
 			input = scanner.nextInt();
+			if(input == 33) break;
 		} while (input > StaticValue.MAX_COUNT || input < StaticValue.MIN_COUNT); // 티켓 주문가능수는 최대 10개
+		if(input == 33) sys.sysEnd();
 		return input;
 	}
 
 	protected int ticketSale(int type) { // 우대사항선택 - 종합이용권이 우대사항 수에 관여하기에 파라미터 입력
+		SystemFunc sys = new SystemFunc();
 		System.out.println("  우대사항을 선택하세요.");
 		System.out.println("\t1. 없음(나이 우대는 자동처리)");
 		System.out.println("\t2. 장애인");
@@ -79,14 +90,16 @@ public class InputData { // for inputs
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
+				if(input == 33) break;
 			} while (input < StaticValue.NONE || input > StaticValue.MULTICHILD); // 종합이용권일경우, 우대사항은 6번까지 가능
 		} else {
 			do {
 				System.out.print("\t\t => ");
 				input = scanner.nextInt();
+				if(input == 33) break;
 			} while (input < StaticValue.NONE || input > StaticValue.MERIT); // 파크이용권일경우, 우대사항은 3번까지 가능
 		}
-
+		if(input == 33) sys.sysEnd();
 		return input;
 	}
 }
