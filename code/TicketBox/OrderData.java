@@ -11,59 +11,59 @@ public class OrderData {
 	private int adventageType; // 우대사항
 	
 	// 권종 getter/setter
-	public int getTicketType() {
+	protected int getTicketType() {
 		return ticketType;
 	}
-	public void setTicketType(int ticketType) {
+	protected void setTicketType(int ticketType) {
 		this.ticketType = ticketType;
 	}
 	// 이용권 getter/setter
-	public int getTicketDay() {
+	protected int getTicketDay() {
 		return ticketDay;
 	}
-	public void setTicketDay(int ticketDay) {
+	protected void setTicketDay(int ticketDay) {
 		this.ticketDay = ticketDay;
 	}
 	// 주민번호 getter/setter
-	public String getIDNumber() {
+	protected String getIDNumber() {
 		return IDNumber;
 	}
-	public void setIDNumber(String iDNumber) {
+	protected void setIDNumber(String iDNumber) {
 		IDNumber = iDNumber;
 	}
 	// 연령대 getter/setter
-	public int getAge() {
+	protected int getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	protected void setAge(int age) {
 		this.age = age;
 	}
 	// 티켓수 getter/setter
-	public int getOrderCount() {
+	protected int getOrderCount() {
 		return orderCount;
 	}
-	public void setOrderCount(int orderCount) {
+	protected void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
 	// 할인된 개당 티겟값 getter/setter
-	public int getPrice() {
+	protected int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	protected void setPrice(int price) {
 		this.price = price;
 	}
 	// 해당 지불 총합 getter/setter
-	public int getSum() {
+	protected int getSum() {
 		return sum;
 	}
-	public void setSum(int sum) {
+	protected void setSum(int sum) {
 		this.sum = sum;
 	}
 	// 우대사항 getter/setter
-	public int getAdventageType() {
+	protected int getAdventageType() {
 		return adventageType;
 	}
-	public void setAdventageType(int adventageType) {
+	protected void setAdventageType(int adventageType) {
 		this.adventageType = adventageType;
 	}
 }
