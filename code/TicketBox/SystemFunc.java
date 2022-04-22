@@ -27,7 +27,7 @@ public class SystemFunc {
 				orderitem = new OrderData(); // 초기화
 			}
 			pui.printTickets(totalSum); // 발권한 티켓 종류 & 수 & 가격등 출력
-//			save.inputFile(); // 해당 파일에 입력
+			save.inputFile(); // 해당 파일에 입력
 			SaveVals.orderList = new ArrayList<>(); // 해당 배열 초기화
 		} while (pui.inputEnd() == StaticValue.CONTINUE); // if isExit == 2 => program end
 	}
