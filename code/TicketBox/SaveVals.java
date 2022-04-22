@@ -26,27 +26,19 @@ public class SaveVals { // save & make csv files
 			StringBuilder str = new StringBuilder(); // 용량을 적게 차지하기위한 가변성 string
 			for (OrderData item : orderList) { // forEach 사용
 				str.append(today + ","); // 오늘날짜 입력
-				// 이용권
-				if (item.getTicketType() == StaticValue.ALL_TICKET) str.append(String.format("%-7s,", "종합이용권"));
-				else if (item.getTicketType() == StaticValue.PARK_TICKET) str.append(String.format("%-7s,", "파크이용권"));
-				// 권종
-				if (item.getTicketDay() == StaticValue.ALL_DAY) str.append(String.format("%-6s,", "1DAY"));
-				else if (item.getTicketDay() == StaticValue.AFTER4) str.append(String.format("%-6s,", "After4"));
+				// 종합 or 파크이용권 - ticketType[] -> 해당 문자열이 담긴 배열, index값 == item.getTicketType()
+				str.append(String.format("%-7s,", StaticValue.TICKET_TYPE[item.getTicketType()]));
+				// 종일권 or 오후권 - ticketTime[] -> 해당 문자열이 담긴 배열, index값 == item.getTicketDay()
+				str.append(String.format("%-6s,", StaticValue.TICKET_TIME[item.getTicketDay()]));
 				// 연령
-				if (item.getAge() == StaticValue.OLD) str.append(String.format("%-4s,", "노인"));
-				else if (item.getAge() == StaticValue.ADULT) str.append(String.format("%-4s,", "어른")); // 어른
-				else if (item.getAge() == StaticValue.TEEN) str.append(String.format("%-4s,", "청소년")); // 청소년
-				else if (item.getAge() == StaticValue.CHILD) str.append(String.format("%-4s,", "어린이")); // 어린이
-				else str.append(String.format("%-4s,", "베이비"));
-				// 수량 & 가격
+				str.append(String.format("%-6s,", StaticValue.AGE[item.getAge()]));
+				// 티켓수, 티켓가격(할인적용)
 				str.append(String.format("%d,%d,", item.getOrderCount(), item.getSum()));
-				// 우대사항
+				// 우대권 종류
 				if (item.getAdventageType() == StaticValue.NONE) str.append("없음\n");
-				else if (item.getAdventageType() == StaticValue.DISABLE) str.append("장애인\n");
-				else if (item.getAdventageType() == StaticValue.MERIT) str.append("국가유공자\n");
-				else if (item.getAdventageType() == StaticValue.VACSOLD) str.append("휴가장병\n");
-				else if (item.getAdventageType() == StaticValue.PREGNANT) str.append("임산부\n");
-				else if (item.getAdventageType() == StaticValue.MULTICHILD) str.append("다둥이\n");
+				else { // 출력 : *[우대사항] 우대적용
+					str.append(StaticValue.SALE_ADVANTAGE[item.getAdventageType()] + "\n");
+				}
 				
 				fw.write(str.toString()); // 해당 문장 string전환 & 파일 입력
 				str.setLength(0); // stringbuilder 초기화
