@@ -3,6 +3,21 @@
 > 2. 계속하지 않을경우, 입력한 티켓들 출력
 > 3. 최종 종료 직전, 숫자 0을 입력할 경우 데이터 분석 결과로 이동, 분석내용 출력
 
+### class 구성
+```
+├── TickeBox
+│    ├── Ticketing.java
+│    ├── SystemFunc.java
+│    ├── InputData.java
+│    ├── ReadFile.java
+│    ├── CalTickets.java
+│    ├── CheckTickets.java
+│    ├── SaveVals.java
+│    ├── PrintUI.java
+│    ├── StaticValue.java
+│    └── OrderData.java
+```
+
 ### 출력 결과  
 #### 티켓팅 실행   
 ![image](https://user-images.githubusercontent.com/50227588/164381334-a8535083-1544-464a-9d1e-67a3e5bc702c.png)   
