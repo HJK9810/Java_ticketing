@@ -44,6 +44,6 @@ public class SystemFunc {
 	
 	protected void sysEnd() {
 		System.out.println("프로그램을 강제 종료합니다.");
-		System.exit(0);
+		System.exit(0); // jvm 강제종료함수
 	}
 }
