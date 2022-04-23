@@ -34,3 +34,6 @@
 
 * StaticValue.java : 모든 상수 저장 클래스  
 * OrderData.java : 각 데이터(객체화) 저장클래스 
+    
+> 자세한 사항은 위키 기록 : 
+> [wiki](https://github.com/HJK9810/Java_ticketing/wiki/Java_ticketing)
